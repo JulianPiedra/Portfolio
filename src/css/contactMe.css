@@ -1,0 +1,84 @@
+.contactMeContainer {
+    align-items: center;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 4.4rem 4.4rem;
+    height: 100vh;
+}
+
+.contactMeTitle {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 575px;
+}
+
+.contactMeForm {
+    align-items: center;
+    background-color: #060a0f;
+    border-radius: 14px;
+    color: #e9ecef;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0 auto;
+    margin-bottom: 2.2rem;
+    padding: 4.4rem;
+    position: relative;
+    width: 65%;
+}
+
+.contactMeForm button {
+    background-color: initial;
+    border: 1px solid #888;
+    color: #fff;
+    cursor: pointer;
+    padding: 1rem 4.2rem;
+    margin-top: 1.8rem;
+    font-size: large;
+    transition: all 0.7s;
+    text-transform: uppercase;
+}
+.contactMeForm button:hover {
+    zoom: 115%;
+}
+
+
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    margin-top: 1.8rem;
+}
+
+.inputContainer label {
+    font-size: 17px;
+    margin-bottom: 1.2rem;
+}
+
+.inputContainer input {
+    background-color: #3b4957;
+    padding: .8rem;
+    width: 100%;
+    border-bottom: 1px solid #868e96;
+    border-radius: 6px;
+}
+
+.inputContainer textarea {
+    background-color: #3b4957;
+    border-radius: 6px;
+    padding: .8rem;
+    width: 100%;
+}
+
+.inputContainer .errorMessage {
+    color: red;
+    margin-bottom: -0.8rem;
+    font-weight: 300;
+}

@@ -2,5 +2,19 @@
     "portfolio_line_one": "Hello there! I'm Julian Piedra.",
     "portfolio_line_two": "I am a graduate with an Associate's degree in Information Technology,",
     "portfolio_line_three": "and looking to kickstart my career in the tech industry.",
-    "portfolio_line_four": "I'm passionate about technology and always looking to learn new things."
+    "portfolio_line_four": "I'm passionate about technology and always looking to learn new things.",
+    "contact_me_title": "Contact Me!",
+    "contact_me_paragraph": "If you have any questions or would like to get in touch! Please do. ",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "validations": {
+        "error_name_required": "Name is required",
+        "error_name_max_length": "Name must be less than 70 characters",
+        "error_name_invalid": "Name has invalid characters",
+        "error_email_required": "Email is required",
+        "error_email_invalid": "Email is invalid",
+        "error_message_required": "Message is required"
+    }
 }

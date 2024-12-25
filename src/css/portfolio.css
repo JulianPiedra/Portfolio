@@ -1,19 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-body {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-    color: white;
-    background-color: #1F1F1F;
-    margin: 0;
-    padding: 0;
-}
+
 
 .portfolio {
-    display: block;
-    align-items: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    justify-content: center;
     padding: 20px;
     margin: 0 auto;
-    max-width: 550px;
+    max-width: 575px;
 }
