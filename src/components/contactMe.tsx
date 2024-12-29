@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import '../css/contactMe.css';
 import { useTranslation } from 'react-i18next';
-
-// Define the type for form data
-interface FormData {
-    name: string;
-    email: string;
-    message: string;
-}
+import { FormData } from '../models/formData.tsx';
+import { SendEmail } from '../services/emailSender.tsx';
+import Swal from "sweetalert2";
 
 function ContactMe() {
     const { t } = useTranslation();  // Hook to access translations
@@ -28,7 +24,7 @@ function ContactMe() {
             ...prevFormData,
             [name]: value,
         }));
-        
+
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -65,25 +61,49 @@ function ContactMe() {
     }, [formData, t]); // Re-run the validation whenever formData changes
 
     // Handle form submission
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault(); // Prevent default form submission
 
-        // If no errors, proceed with form submission logic (e.g., send to server)
+        // If no errors, proceed with form submission logic
         if (Object.keys(errors).length === 0) {
             try {
-                // Send the form data (currently a placeholder)
-                console.log('Form submitted:', formData);
+                // Send the form data
+                const response = await SendEmail(formData);
+                if (response.status === 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        text: t('email_sent'),
+                        timer: 3000, 
+                        showConfirmButton: false, 
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        text: t('email_not_sent'),
+                        timer: 3000, 
+                        showConfirmButton: false, 
+                      });
+                      
+                }
+
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    text: t('email_not_sent') +': '+ error.message,
+                    timer: 3000, 
+                    showConfirmButton: false,
+                  });
+                  
+            } finally {
                 // Reset the form after submission
                 setFormData({ name: '', email: '', message: '' });
                 setTouched({});
-            } catch (error) {
-                console.error('Error while submitting form:', error);
             }
         }
     };
 
     return (
-        <div className="contactMeContainer">
+        <div className="contactMeContainer" id="contactMeContainer">
             <div className="contactMeTitle">
                 <h1>{t('contact_me_title')}</h1>
                 <h2>{t('contact_me_paragraph')}</h2>
@@ -95,9 +115,10 @@ function ContactMe() {
                         type="text"
                         id="name"
                         name="name"
+                        placeholder={t('name_portfolio')}
                         value={formData.name}
                         onChange={handleChange}
-                        onBlur={handleBlur} 
+                        onBlur={handleBlur}
                     />
                     {touched.name && errors.name && <p className="errorMessage">{errors.name}</p>}
                 </div>
@@ -108,9 +129,10 @@ function ContactMe() {
                         type="text"
                         id="email"
                         name="email"
+                        placeholder={t('email_example')}
                         value={formData.email}
                         onChange={handleChange}
-                        onBlur={handleBlur} 
+                        onBlur={handleBlur}
                     />
                     {touched.email && errors.email && <p className="errorMessage">{errors.email}</p>}
                 </div>
@@ -120,9 +142,10 @@ function ContactMe() {
                     <textarea
                         id="message"
                         name="message"
+                        placeholder={t('message_example')}
                         value={formData.message}
                         onChange={handleChange}
-                        onBlur={handleBlur} 
+                        onBlur={handleBlur}
                     ></textarea>
                     {touched.message && errors.message && <p className="errorMessage">{errors.message}</p>}
                 </div>

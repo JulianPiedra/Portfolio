@@ -29,18 +29,22 @@ const Language = () => {
       <div
         onClick={() => handleChangeLanguage(selectedLanguage === 'en' ? 'es' : 'en')}
         style={{
-          padding: '5px',
-          borderRadius: '100%',
-          border: '1px solid #ccc',
+          padding: '15px',
           cursor: 'pointer',
           backgroundColor: 'transparent',
           alignItems: 'center',
           justifyContent: 'center',
-          transition: 'transform 0.3s ease', // Smooth transition for scaling
+          transition: 'transform 0.3s ease',
+          backfaceVisibility: 'hidden',
+          transformStyle: 'preserve-3d',
+          willChange: 'transform',
+          transform: 'translateZ(0)', 
         }}
-        onMouseEnter={(e) => (e.target as HTMLDivElement).style.transform = 'scale(1.1)'} 
-        onMouseLeave={(e) => (e.target as HTMLDivElement).style.transform = 'scale(1)'} 
+        onMouseEnter={(e) => (e.target as HTMLDivElement).style.transform = 'scale(1.1)'}
+        onMouseLeave={(e) => (e.target as HTMLDivElement).style.transform = 'scale(1)'}
       >
+
+
         <img
           src={
             selectedLanguage === 'en'

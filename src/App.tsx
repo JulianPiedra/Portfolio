@@ -1,5 +1,7 @@
-import Portfolio from './screens/portfolio.tsx';
+import Portfolio from './components/portfolio.tsx';
 import Language from './components/language.tsx';
+import ContactMe from './components/contactMe.tsx'
+import AboutMe from './components/aboutMe.tsx'
 import React from 'react';
 import './App.css'
 
@@ -9,6 +11,8 @@ function App() {
     <>
     <Language />
     <Portfolio />
+    <AboutMe />
+    <ContactMe />
     </>
   );
 }

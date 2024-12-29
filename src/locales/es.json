@@ -1,5 +1,11 @@
 {
-    "portfolio_line_one": "¡Hola! Soy Julián Piedra.",
+    "portfolio_line_one": "¡Hola! ",
+    "name_intro": "Mi nombre es ",
+    "name_portfolio": "Julián Piedra",
+    "introduction": "Y soy un Desarrollador de Software.",
+    "get_to_know_me": "¿Quieres conocerme mejor?",
+    "email_not_sent": "Ha ocurrido un error y el correo electrónico no se ha enviado. Por favor, inténtelo de nuevo más tarde.",
+    "email_sent": "¡Correo electrónico enviado con éxito! Estoy deseando leerlo. Me pondré en contacto contigo lo antes posible.",
     "portfolio_line_two": "Soy graduado con diplomado en la carrera Tecnologías de la Información,",
     "portfolio_line_three": "y estoy buscando comenzar mi carrera en la industria tecnológica.",
     "portfolio_line_four": "Soy apasionado de la tecnología y siempre busco aprender cosas nuevas.",
@@ -8,6 +14,15 @@
     "name": "Nombre",
     "email": "Correo Electrónico",
     "message": "Mensaje",
-    "send": "Enviar"
-    
+    "send": "Enviar",
+    "email_example": "miemail@prueba.com",
+    "message_example": "Escribe aquí cualquier cosa que quieras decirme.",
+    "validations": {
+        "error_name_required": "El nombre es requerido",
+        "error_name_max_length": "El nombre debe tener menos de 70 caracteres",
+        "error_name_invalid": "El nombre tiene caracteres inválidos",
+        "error_email_required": "El correo electrónico es requerido",
+        "error_email_invalid": "El correo electrónico es inválido",
+        "error_message_required": "El mensaje es requerido"
+    }
 }
