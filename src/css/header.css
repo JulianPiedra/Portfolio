@@ -1,0 +1,39 @@
+.Header {
+    display: flex;
+    align-items: center;    
+    background-color: transparent;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    top: 0;
+    margin: 0;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    transition: background-color 0.3s ease; /* Animación suave */
+}
+
+.Header.scrolled {
+    background-color: #060a0f;
+
+}
+.Header a {
+    color: #fff;
+    text-decoration: none;
+}
+.navLinks {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    align-items: center;
+    max-width: 80rem;   
+}
+.navLinks ul {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}

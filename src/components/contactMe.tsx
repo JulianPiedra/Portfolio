@@ -105,10 +105,10 @@ function ContactMe() {
     return (
         <div className="contactMeContainer" id="contactMeContainer">
             <div className="contactMeTitle">
-                <h1>{t('contact_me_title')}</h1>
                 <h2>{t('contact_me_paragraph')}</h2>
             </div>
             <form className="contactMeForm" onSubmit={handleSubmit}>
+            <h1>{t('contact_me_title')}</h1>
                 <div className="inputContainer">
                     <label htmlFor="name">{t('name')}</label>
                     <input

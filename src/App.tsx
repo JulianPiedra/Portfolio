@@ -1,7 +1,8 @@
 import Portfolio from './components/portfolio.tsx';
-import Language from './components/language.tsx';
-import ContactMe from './components/contactMe.tsx'
-import AboutMe from './components/aboutMe.tsx'
+import ContactMe from './components/contactMe.tsx';
+import AboutMe from './components/aboutMe.tsx';
+import Header from './components/header.tsx';
+
 import React from 'react';
 import './App.css'
 
@@ -9,7 +10,7 @@ import './App.css'
 function App() {
   return (
     <>
-    <Language />
+    <Header />
     <Portfolio />
     <AboutMe />
     <ContactMe />

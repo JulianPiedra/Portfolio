@@ -1,9 +1,24 @@
 .aboutMe {
-    align-items: center;
     background-color: #000;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
+    flex-direction: row;
     height: 100vh;
+    justify-content: start;
+}
+.aboutMe_container {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    margin-left: 20rem;
+    margin-top: 13rem;
+    flex-direction: column;
+}
+.socialMedia img {
+    width: 50px;
+    height: 50px;      
+}
+.aboutMe_list {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
 }

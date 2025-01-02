@@ -14,7 +14,7 @@ function Portfolio() {
       <div className="video-overlay">
         <video autoPlay={true} preload="true" loop={true} id="bg-video" className="bg-video" src="/wallpaper2.mp4"></video>
       </div>
-      <div className="portfolio">
+      <div className="portfolio" id="portfolio">
         <h1 className={isLoaded ? 'fade-in-up' : ''}>{t('portfolio_line_one')}</h1>
         <h1 className={isLoaded ? 'fade-in-up' : ''}>{t('name_intro')}<span>{t('name_portfolio')}</span></h1>
         <h2 className={isLoaded ? 'fade-in-up' : ''}>{t('introduction')}</h2>
