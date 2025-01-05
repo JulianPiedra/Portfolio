@@ -10,11 +10,18 @@
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
     transition: background-color 0.3s ease; /* Animación suave */
+
 }
 
 .Header.scrolled {
     background-color: #060a0f;
-
+}
+.Header img {
+    width: 80px;
+}
+.logo a {
+    display: flex;   
+    margin: 0 auto; 
 }
 .Header a {
     color: #fff;

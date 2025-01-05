@@ -23,8 +23,8 @@ function Header() {
     return (
         <nav className={`Header ${isScrolled ? "scrolled" : ""}`}>
             <div className="navLinks">
-                <div>
-                    <a href="#portfolio">{t('name_portfolio')}</a>
+                <div className="logo">
+                    <a href="#portfolio"><img src="./logo.png"></img></a>
                 </div>
                 <ul>
                     <a href="#aboutMe">{t('about_me_title')}</a>

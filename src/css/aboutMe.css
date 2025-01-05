@@ -1,24 +1,124 @@
 .aboutMe {
     background-color: #000;
     display: flex;
-    flex-direction: row;
-    height: 100vh;
-    justify-content: start;
-}
-.aboutMe_container {
-    display: flex;
-    width: fit-content;
-    height: fit-content;
-    margin-left: 20rem;
-    margin-top: 13rem;
     flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
+
+.aboutMeContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.aboutMeContent {
+    display: flex;
+    margin-left: 5%;
+    font-size: 20px;
+    max-width: 700px;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.aboutMeContent ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.aboutMeContent li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.aboutMeContent li .icon {
+    margin-right: 15px;
+}
+
+.aboutMeHeader {
+    display: flex;
+    width: 370px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.socialMedia {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5.5%;
+}
+
 .socialMedia img {
-    width: 50px;
-    height: 50px;      
+    width: 100%;
+    height: 60px;
+    transition: all 0.5s;
 }
+
+.socialMedia :hover {
+    scale: 1.1;
+}
+
 .aboutMe_list {
     display: flex;
     width: fit-content;
     height: fit-content;
+}
+
+.skillsList {
+    width: 70%;
+    height: 50px;
+    content-visibility: auto;
+    overflow: hidden;
+    will-change: transform;
+    border-radius: 20px;
+}
+
+.skillConveyor {
+    display: flex;
+    color: #be09f5;
+    flex-direction: row;
+    gap: 20px;
+    width: 200%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.skillSlide {
+    display: inline-flex;
+    animation: moveRight 20s linear infinite;
+    white-space: nowrap;
+}
+
+.skillSlide :nth-child(odd) {
+    color: white;
+}
+
+.skillConveyor .skillSlide {
+    display: flex;
+    gap: 20px;
+}
+
+.skills {
+    background-color: #3b4957;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
 }
