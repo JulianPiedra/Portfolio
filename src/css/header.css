@@ -1,32 +1,36 @@
 .Header {
     display: flex;
-    align-items: center;    
+    align-items: center;
     background-color: transparent;
     position: fixed;
     z-index: 1000;
-    width: 100%;
     top: 0;
     margin: 0;
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
-    transition: background-color 0.3s ease; /* Animación suave */
-
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 100vw;
 }
 
 .Header.scrolled {
     background-color: #060a0f;
 }
+
 .Header img {
     width: 80px;
 }
+
 .logo a {
-    display: flex;   
-    margin: 0 auto; 
+    display: flex;
+    margin: 0 auto;
 }
+
 .Header a {
     color: #fff;
     text-decoration: none;
 }
+
 .navLinks {
     display: flex;
     justify-content: space-between;
@@ -34,8 +38,9 @@
     margin: 0 auto;
     padding: 0;
     align-items: center;
-    max-width: 80rem;   
+    max-width: 80rem;
 }
+
 .navLinks ul {
     display: flex;
     gap: 2.5rem;
@@ -43,4 +48,99 @@
     margin: 0;
     padding: 0;
     align-items: center;
+}
+
+
+.navMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.bar {
+    position: relative;
+    height: 4px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.bar.open:nth-child(1) {
+    transform: rotate(45deg) translateX(6.5px) translateY(5px);
+    top: 0;
+    left: 0;
+}
+
+.bar.open:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.bar.open:nth-child(3) {
+    transform: rotate(-45deg) translateX(6px) translateY(-5px);
+    top: 0;
+    left: 0;
+}
+
+.options {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.mobileNav {
+    display: flex;
+    background-color: #060A0F;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.mobileNav ul {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.mobileNav li {
+    display: flex;
+    height: 30px;
+    width: 140px;
+    align-items: center;
+}
+
+.mobileNav a {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    padding: 10px;
+    border: #be09f5 1px solid;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
 }

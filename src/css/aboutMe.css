@@ -2,16 +2,20 @@
     background-color: #000;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100%;
+    min-height: 100vh;
+    height: fit-content;
+    width:100%;
     justify-content: center;
     align-items: center;
+    max-width: 100vw;
+
 }
 
 .aboutMeContainer {
     display: flex;
     flex-direction: row;
     height: 100%;
+    flex-wrap: wrap;
 }
 
 .aboutMeContent {
@@ -78,11 +82,12 @@
     overflow: hidden;
     will-change: transform;
     border-radius: 20px;
+    margin-bottom: 3rem;
 }
 
 .skillConveyor {
     display: flex;
-    color: #be09f5;
+    color: white;
     flex-direction: row;
     gap: 20px;
     width: 200%;
@@ -98,9 +103,7 @@
     white-space: nowrap;
 }
 
-.skillSlide :nth-child(odd) {
-    color: white;
-}
+
 
 .skillConveyor .skillSlide {
     display: flex;

@@ -1,0 +1,74 @@
+.education {
+    background-color: rgb(221, 220, 220);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: fit-content ;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 100vw;
+}
+
+.educationHeader {
+    text-align: center;
+    margin-bottom:3rem;
+
+}
+
+.educationHeader h1 {
+    color: #151030;
+}
+
+.educationHeader h2 {
+    color: #151030;
+    margin: 0;
+}
+
+.educationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-direction: row;
+    width: fit-content;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 19.7%;
+    min-width: 250px;
+    min-height: 550px;
+    background-color: #151030;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s;
+    color: white;
+    padding: 1rem;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    border-radius: 10px;
+}
+
+.card h2{
+    font-weight: 700 ;
+}
+
+.card h3 {
+    font-weight: 300;
+}
+.card p {
+    font-weight: 300;
+    font-size: 18px;
+}

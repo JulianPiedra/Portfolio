@@ -1,90 +1,41 @@
 import React, { useEffect, useState } from "react";
-import '../css/aboutMe.css';
+import '../css/education.css';
 import { useTranslation } from 'react-i18next';
-import { faGraduationCap, faCode, faLaptop, faCog, faBullseye } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function AboutMe() {
+function Education() {
     const { t } = useTranslation();  // Hook to access translations
-    const [resume, setResume] = useState('');
 
-    useEffect(() => {
-        if (t('language') === 'es') {
-            setResume('./Curriculum-JulianPiedra.pdf');
-        } else {
-            setResume('./Resume-JulianPiedra.pdf');
-        }
-    },
-        [t]);
+
+
     return (
-        <div className="aboutMe" id="aboutMe">
-            <div className="aboutMeHeader">
-                <h1>{t('about_me')}</h1>
-                <h2>{t('about_me_explore')}</h2>
-                <div className="socialMedia">
+        <div className="education" id="education">
+            <div className="educationHeader">
+                <h1>{t('education_title')}</h1>
+                <h2>{t('education_background')}</h2>
+            </div>
 
-                    <a href="https://www.linkedin.com/in/julian-piedra-89a494306" target="_blank">
-                        <img src="./linkedin.svg" alt="LinkedIn Icon" />
-                    </a>
-                    <a href="https://github.com/JulianPiedra" target="_blank">
-                        <img src="./github.svg" alt="GitHub Icon" />
-                    </a>
-                    <a href={resume} target="_blank">
-                        <img src="./resume.svg" alt="GitHub Icon" />
-                    </a>
+            <div className="educationContainer">
+                <div className="card">
+                    <img src="https://drecartago.org/circuito2/cole_francisca.png" />
+                    <h2>{t('high_school')}</h2>
+                    <h3>Colegio Francisca Carrasco Jiménez, <span>CR-C</span></h3>
+                    <p>{t('high_school_description')}</p>
                 </div>
-
+                <div className="card">
+                    <img src="https://scontent.fsyq7-1.fna.fbcdn.net/v/t39.30808-6/257869071_2008629595967269_2089897665302572830_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Bq5RlMChD5QQ7kNvgEA5eeT&_nc_oc=AdhK6erok3jHocCkThMuRrbFODP5yRdWvFvd0Xkk2YTQsfn7iXEu1nySisBhinPk2m8&_nc_zt=23&_nc_ht=scontent.fsyq7-1.fna&_nc_gid=A-d9tIQ2P7kqRcizdeuwGzg&oh=00_AYC4-XyNvtnaq3Z4A66J_autvs8ZchJR20XnbZyJgs2NxA&oe=67810AC1" />
+                    <h2>{t('conversational_english')}</h2>
+                    <h3>Idiomas.CR, <span>CR-C</span></h3>
+                    <p>{t('conversation_english_description')}</p>
+                </div>
+                <div className="card">
+                    <img src="https://www.larepublica.net/storage/images/2021/11/05/20211105161832.cuc-1.jpg" />
+                    <h2>{t('higher_education')}</h2>
+                    <h3>Colegio Universitario de Cartago, <span>CR-C</span></h3>
+                    <p>{t('higher_education_description')}</p>
+                </div>
             </div>
-
-            <div className="aboutMeContent">
-                <ul>
-                    <li>
-                        <div className="icon" style={{ color: '#FF6347' }}>
-                            <FontAwesomeIcon icon={faGraduationCap} bounce />
-                        </div>
-                        <div className="text">
-                            I’m a proud recent graduate based in Costa Rica with a strong foundation in coding and software development. Ready to excel in the fast-paced world of technology.
-                        </div>
-                    </li>
-                    <li>
-                        <div className="icon" style={{ color: '#4CAF50' }}>
-                            <FontAwesomeIcon icon={faCode} bounce />
-                        </div>
-                        <div className="text">
-                            I enjoy creating efficient, impactful solutions and turning ideas into reality through code.
-                        </div>
-                    </li>
-                    <li>
-                        <div className="icon" style={{ color: '#2196F3' }}>
-                            <FontAwesomeIcon icon={faLaptop} bounce />
-                        </div>
-                        <div className="text">
-                            Constantly exploring new technologies and staying updated with the latest industry trends.
-                        </div>
-                    </li>
-                    <li>
-                        <div className="icon" style={{ color: '#FF9800' }}>
-                            <FontAwesomeIcon icon={faCog} bounce />
-                        </div>
-                        <div className="text">
-                            Skilled at analyzing problems, recognizing patterns, and crafting optimized solutions.
-                        </div>
-                    </li>
-                    <li>
-                        <div className="icon" style={{ color: '#9C27B0' }}>
-                            <FontAwesomeIcon icon={faBullseye} bounce />
-                        </div>
-                        <div className="text">
-                            Always seeking opportunities to grow by mastering new tools and technologies.
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-
-
         </div>
     );
 }
 
-export default AboutMe;
+export default Education;

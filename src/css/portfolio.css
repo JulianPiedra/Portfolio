@@ -1,24 +1,27 @@
 .portfolio {
-    height: 100vh;
+    min-height: 100vh;
+    height: fit-content ;
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
     margin: 0 auto;
-    min-width: 575px;
+    max-width: 100vw;
     width: 100%;
 }
 
 #bg-video,
 .bg-video {
-    height: 100%;
     left: 0;
     object-fit: cover;
     position: relative;
     position: fixed;
     top: 0;
     width: 100%;
+    height: 100%;
+
     z-index: -1;
+    max-width: 100vw;
 }
 
 .video-overlay {
@@ -27,6 +30,7 @@
     position: absolute;
     top: 0;
     width: 100%;
+    max-width: 100vw;
     z-index: -1;
 }
 

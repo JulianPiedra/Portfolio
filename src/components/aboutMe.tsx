@@ -8,13 +8,13 @@ function AboutMe() {
     const { t } = useTranslation();  // Hook to access translations
     const [resume, setResume] = useState('');
     const skills = [
-        '.NET',
         'C#',
+        'C++',
+        'C',
+        'VB.NET',
         'JavaScript',
         'React',
-        'Angular',
         'Node.js',
-        'Express',
         'SQL',
         'MongoDB',
         'HTML',
@@ -33,8 +33,7 @@ function AboutMe() {
         } else {
             setResume('./Resume-JulianPiedra.pdf');
         }
-    },
-        [t]);
+    }, [t]);
     return (
         <div className="aboutMe" id="aboutMe">
             <div className="aboutMeContainer">
