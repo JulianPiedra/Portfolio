@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 function ContactMe() {
     const { t } = useTranslation();  // Hook to access translations
 
-    // State for form inputs, errors and touched fields
+    // State for form inputs, errors, touched fields, and loading status
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
@@ -17,6 +17,7 @@ function ContactMe() {
 
     const [errors, setErrors] = useState<Partial<FormData>>({});
     const [touched, setTouched] = useState<Partial<FormData>>({});
+    const [loading, setLoading] = useState(false); // New loading state
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -24,7 +25,6 @@ function ContactMe() {
             ...prevFormData,
             [name]: value,
         }));
-
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -35,7 +35,6 @@ function ContactMe() {
         }));
     };
 
-    // Validate inputs whenever formData changes
     useEffect(() => {
         const newErrors: Partial<FormData> = {};
 
@@ -64,38 +63,66 @@ function ContactMe() {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault(); // Prevent default form submission
 
-        // If no errors, proceed with form submission logic
-        if (Object.keys(errors).length === 0) {
+        // Mark all fields as touched to trigger validation on submit
+        setTouched({
+            name: true,
+            email: true,
+            message: true,
+        });
+
+        const newErrors: Partial<FormData> = {};
+
+        if (!formData.name.trim()) {
+            newErrors.name = t('validations.error_name_required');
+        } else if (formData.name.length > 70) {
+            newErrors.name = t('validations.error_name_max_length');
+        } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(formData.name)) {
+            newErrors.name = t('validations.error_name_invalid');
+        }
+
+        if (!formData.email.trim()) {
+            newErrors.email = t('validations.error_email_required');
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            newErrors.email = t('validations.error_email_invalid');
+        }
+
+        if (!formData.message.trim()) {
+            newErrors.message = t('validations.error_message_required');
+        }
+
+        setErrors(newErrors); // Update errors state
+
+        if (Object.keys(newErrors).length === 0) {
             try {
+                setLoading(true); // Set loading to true when starting the request
+
                 // Send the form data
                 const response = await SendEmail(formData);
+
                 if (response.status === 200) {
                     Swal.fire({
                         icon: 'success',
                         text: t('email_sent'),
-                        timer: 3000, 
-                        showConfirmButton: false, 
+                        timer: 3000,
+                        showConfirmButton: false,
                     });
                 } else {
                     Swal.fire({
                         icon: 'error',
                         text: t('email_not_sent'),
-                        timer: 3000, 
-                        showConfirmButton: false, 
-                      });
-                      
+                        timer: 3000,
+                        showConfirmButton: false,
+                    });
                 }
-
             } catch (error) {
                 Swal.fire({
                     icon: 'error',
-                    text: t('email_not_sent') +': '+ error.message,
-                    timer: 3000, 
+                    text: t('email_not_sent') + ': ' + error.message,
+                    timer: 3000,
                     showConfirmButton: false,
-                  });
-                  
+                });
             } finally {
-                // Reset the form after submission
+                setLoading(false); // Set loading to false once the request is complete
                 setFormData({ name: '', email: '', message: '' });
                 setTouched({});
             }
@@ -108,7 +135,16 @@ function ContactMe() {
                 <h2>{t('contact_me_paragraph')}</h2>
             </div>
             <form className="contactMeForm" onSubmit={handleSubmit}>
-            <h1>{t('contact_me_title')}</h1>
+                <h1>{t('contact_me_title')}</h1>
+
+                {/* Display the overlay and spinner when loading */}
+                {loading && (
+                    <>
+                        <div className="overlay"></div>
+                        <div className="spinner"></div>
+                    </>
+                )}
+
                 <div className="inputContainer">
                     <label htmlFor="name">{t('name')}</label>
                     <input
@@ -149,7 +185,10 @@ function ContactMe() {
                     ></textarea>
                     {touched.message && errors.message && <p className="errorMessage">{errors.message}</p>}
                 </div>
-                <button type="submit">{t('send')}</button>
+
+                <button type="submit" disabled={loading}>
+                    {t('send')}
+                </button>
             </form>
         </div>
     );

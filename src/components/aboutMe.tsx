@@ -44,7 +44,6 @@ function AboutMe() {
                     </div>
 
                     <div className="socialMedia">
-
                         <a href="https://www.linkedin.com/in/julian-piedra-89a494306" target="_blank">
                             <img src="./linkedin.svg" alt="LinkedIn Icon" />
                         </a>
