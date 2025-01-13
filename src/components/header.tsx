@@ -56,7 +56,7 @@ function Header() {
                                 <a href="#education" onClick={toggleMenu}>{t('education_title')}</a>
                             </li>
                             <li>
-                                <a href="#certification" onClick={toggleMenu}>{t('contact_me_title')}</a>
+                                <a href="#certification" onClick={toggleMenu}>{t('certification_title')}</a>
                             </li>
                             <li>
                                 <a href="#contactMeContainer" onClick={toggleMenu}>{t('contact_me_title')}</a>

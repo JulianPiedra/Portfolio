@@ -22,7 +22,7 @@ function Education() {
                     <p>{t('high_school_description')}</p>
                 </div>
                 <div className="card">
-                    <img src="https://scontent.fsyq7-1.fna.fbcdn.net/v/t39.30808-6/257869071_2008629595967269_2089897665302572830_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Bq5RlMChD5QQ7kNvgEA5eeT&_nc_oc=AdhK6erok3jHocCkThMuRrbFODP5yRdWvFvd0Xkk2YTQsfn7iXEu1nySisBhinPk2m8&_nc_zt=23&_nc_ht=scontent.fsyq7-1.fna&_nc_gid=A-d9tIQ2P7kqRcizdeuwGzg&oh=00_AYC4-XyNvtnaq3Z4A66J_autvs8ZchJR20XnbZyJgs2NxA&oe=67810AC1" />
+                    <img src="https://lh5.googleusercontent.com/p/AF1QipPFpQo9k-591UA74hFtg2UvsJ8kLCf_XRuCxV3R=s467-k-no" />
                     <h2>{t('conversational_english')}</h2>
                     <h3>Idiomas.CR, <span>CR-C</span></h3>
                     <p>{t('conversation_english_description')}</p>

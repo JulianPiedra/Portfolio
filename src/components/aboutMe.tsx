@@ -38,7 +38,7 @@ function AboutMe() {
         <div className="aboutMe" id="aboutMe">
             <div className="aboutMeContainer">
                 <div className="aboutMeHeader">
-                    <div>
+                    <div className="intro">
                         <h1>{t('about_me')}</h1>
                         <h2>{t('about_me_explore')}</h2>
                     </div>

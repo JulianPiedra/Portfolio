@@ -19,6 +19,7 @@
 
 .Header img {
     width: 80px;
+    margin-left: 1rem;
 }
 
 .logo a {
@@ -130,7 +131,7 @@
 .mobileNav li {
     display: flex;
     height: 30px;
-    width: 140px;
+    width: 160px;
     align-items: center;
 }
 

@@ -29,8 +29,8 @@ const Language = () => {
         <img
           src={
             selectedLanguage === 'en'
-              ? '/us.png'
-              : '/es.png'
+              ? './us.png'
+              : './es.png'
           } // Añadir condición para la bandera alemana
           alt={selectedLanguage}
           style={{ width: '30px', height: '22px', marginTop: '5px' }}
