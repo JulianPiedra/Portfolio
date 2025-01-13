@@ -77,6 +77,21 @@
     font-weight: 700;
     margin: auto;
 }
+.external-link {
+    color: #007bff; 
+    text-decoration: underline; 
+    cursor: pointer; 
+  }
+  
+  .external-link:hover {
+    color: #0056b3; 
+    text-decoration: none; 
+  }
+  
+  .external-link:active {
+    color: #003f7f; 
+  }
+  
 
 @media only screen and (max-width: 768px) {
         .certificationContainer {
