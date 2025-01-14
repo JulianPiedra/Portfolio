@@ -19,9 +19,6 @@ function Portfolio() {
         <h1 className={isLoaded ? 'fade-in-up' : ''}>{t('name_intro')}<span>{t('name_portfolio')}</span></h1>
         <h2 className={isLoaded ? 'fade-in-up' : ''}>{t('introduction')}</h2>
         <a className={isLoaded ? 'fade-in-up' : ''} href="#aboutMe">{t('get_to_know_me')}</a>
-        {/* <p>{t('portfolio_line_two')}</p>
-        <p>{t('portfolio_line_three')}</p>
-        <p>{t('portfolio_line_four')}</p> */}
       </div>
 
 
