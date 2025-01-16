@@ -4,38 +4,28 @@ import { useTranslation } from 'react-i18next';
 import { faGraduationCap, faCode, faLaptop, faCog, faBullseye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+// AboutMe component - Displays information about the user with skills, social media links, and resume.
 function AboutMe() {
     const { t } = useTranslation();  // Hook to access translations
+
+    // State to manage resume link based on language
     const [resume, setResume] = useState('');
+    
+    // List of skills to display
     const skills = [
-        'C#',
-        'C++',
-        'C',
-        'VB.NET',
-        'JavaScript',
-        'React',
-        'Node.js',
-        'SQL',
-        'MongoDB',
-        'HTML',
-        'CSS',
-        'NoSQL',
-        'TypeScript',
-        'Python',
-        'PHP',
-        'Java'
+        'C#', 'C++', 'C', 'VB.NET', 'JavaScript', 'React', 'Node.js',
+        'SQL', 'MongoDB', 'HTML', 'CSS', 'NoSQL', 'TypeScript', 'Python', 'PHP', 'Java'
     ];
 
-
+    // Update resume link dynamically based on selected language
     useEffect(() => {
-        if (t('language') === 'es') {
-            setResume('./Curriculum-JulianPiedra.pdf');
-        } else {
-            setResume('./Resume-JulianPiedra.pdf');
-        }
+        const language = t('language'); // Assuming `t('language')` returns the current language
+        setResume(language === 'es' ? './Curriculum-JulianPiedra.pdf' : './Resume-JulianPiedra.pdf');
     }, [t]);
+
     return (
-        <div className="aboutMe" id="aboutMe">
+        <section className="aboutMe" id="aboutMe">
+            {/* Header Section */}
             <div className="aboutMeContainer">
                 <div className="aboutMeHeader">
                     <div className="intro">
@@ -43,83 +33,63 @@ function AboutMe() {
                         <h2>{t('about_me_explore')}</h2>
                     </div>
 
+                    {/* Social Media Links */}
                     <div className="socialMedia">
-                        <a href="https://www.linkedin.com/in/julian-piedra-89a494306" target="_blank">
+                        <a href="https://www.linkedin.com/in/julian-piedra-89a494306" target="_blank" rel="noopener noreferrer">
                             <img src="./linkedin.svg" alt="LinkedIn Icon" />
                         </a>
-                        <a href="https://github.com/JulianPiedra" target="_blank">
+                        <a href="https://github.com/JulianPiedra" target="_blank" rel="noopener noreferrer">
                             <img src="./github.svg" alt="GitHub Icon" />
                         </a>
-                        <a href={resume} target="_blank">
-                            <img src="./resume.svg" alt="GitHub Icon" />
+                        <a href={resume} target="_blank" rel="noopener noreferrer">
+                            <img src="./resume.svg" alt="Resume Icon" />
                         </a>
                     </div>
-
                 </div>
 
+                {/* About Me Content */}
                 <div className="aboutMeContent">
                     <ul>
                         <li>
-                            <div className="icon" style={{ color: '#FF6347' }}>
-                                <FontAwesomeIcon icon={faGraduationCap} bounce />
-                            </div>
-                            <div className="text">
-                                {t('about_me_line_one')}
-                            </div>
+                            <FontAwesomeIcon icon={faGraduationCap} bounce style={{ color: '#FF6347' }} />
+                            <div className="text">{t('about_me_line_one')}</div>
                         </li>
                         <li>
-                            <div className="icon" style={{ color: '#4CAF50' }}>
-                                <FontAwesomeIcon icon={faCode} bounce />
-                            </div>
-                            <div className="text">
-                                {t('about_me_line_two')}
-                            </div>
+                            <FontAwesomeIcon icon={faCode} bounce style={{ color: '#4CAF50' }} />
+                            <div className="text">{t('about_me_line_two')}</div>
                         </li>
                         <li>
-                            <div className="icon" style={{ color: '#2196F3' }}>
-                                <FontAwesomeIcon icon={faLaptop} bounce />
-                            </div>
-                            <div className="text">
-                                {t('about_me_line_three')}
-                            </div>
+                            <FontAwesomeIcon icon={faLaptop} bounce style={{ color: '#2196F3' }} />
+                            <div className="text">{t('about_me_line_three')}</div>
                         </li>
                         <li>
-                            <div className="icon" style={{ color: '#FF9800' }}>
-                                <FontAwesomeIcon icon={faCog} bounce />
-                            </div>
-                            <div className="text">
-                                {t('about_me_line_four')}
-                            </div>
+                            <FontAwesomeIcon icon={faCog} bounce style={{ color: '#FF9800' }} />
+                            <div className="text">{t('about_me_line_four')}</div>
                         </li>
                         <li>
-                            <div className="icon" style={{ color: '#9C27B0' }}>
-                                <FontAwesomeIcon icon={faBullseye} bounce />
-                            </div>
-                            <div className="text">
-                                {t('about_me_line_five')}
-                            </div>
+                            <FontAwesomeIcon icon={faBullseye} bounce style={{ color: '#9C27B0' }} />
+                            <div className="text">{t('about_me_line_five')}</div>
                         </li>
                     </ul>
                 </div>
             </div>
+
+            {/* Skills Section */}
             <div className="skillsList">
                 <div className="skillConveyor">
-                    <div className="skillSlide">
-                        {skills.map((skill, index) => (
-                            <span key={index} className="skills">{skill}</span>
-                        ))}
-                    </div>
-                    <div className="skillSlide">
-                        {skills.map((skill, index) => (
-                            <span key={index} className="skills">{skill}</span>
-                        ))}
-                    </div>
+                    {/* Create a sliding effect for skills */}
+                    {Array(2).fill(null).map((_, slideIndex) => (
+                        <div className="skillSlide" key={slideIndex}>
+                            {skills.map((skill, index) => (
+                                <span key={`${slideIndex}-${index}`} className="skills">{skill}</span>
+                            ))}
+                        </div>
+                    ))}
                 </div>
             </div>
-
-        </div>
-
+        </section>
     );
 }
 
 export default AboutMe;
+

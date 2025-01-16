@@ -5,16 +5,18 @@ import { useTranslation } from 'react-i18next';
 function Portfolio() {
   const { t } = useTranslation();
   const [isLoaded, setIsLoaded] = useState(false);
-
+  //animations on load
   useEffect(() => {
     setIsLoaded(true);
   }, []);
   return (
-    <div>
+    <section id="portfolio">
+      {/*Background video*/}
       <div className="video-overlay">
         <video autoPlay={true} preload="true" loop={true} id="bg-video" className="bg-video" src="./wallpaper2.mp4"></video>
       </div>
-      <div className="portfolio" id="portfolio">
+      {/*Portfolio content*/}
+      <div className="portfolio" >
         <h1 className={isLoaded ? 'fade-in-up' : ''}>{t('portfolio_line_one')}</h1>
         <h1 className={isLoaded ? 'fade-in-up' : ''}>{t('name_intro')}<span>{t('name_portfolio')}</span></h1>
         <h2 className={isLoaded ? 'fade-in-up' : ''}>{t('introduction')}</h2>
@@ -22,7 +24,7 @@ function Portfolio() {
       </div>
 
 
-    </div>
+    </section>
   );
 
 }

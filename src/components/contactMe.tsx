@@ -5,20 +5,46 @@ import { FormData } from '../models/formData.tsx';
 import { SendEmail } from '../services/emailSender.tsx';
 import Swal from "sweetalert2";
 
-function ContactMe() {
-    const { t } = useTranslation();  // Hook to access translations
+// Function to validate form data
+const validateFormData = (formData: FormData, t: Function): Partial<FormData> => {
+    const errors: Partial<FormData> = {};
 
-    // State for form inputs, errors, touched fields, and loading status
+    // Validate name field
+    if (!formData.name.trim()) {
+        errors.name = t('validations.error_name_required');
+    } else if (formData.name.length > 70) {
+        errors.name = t('validations.error_name_max_length');
+    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(formData.name)) {
+        errors.name = t('validations.error_name_invalid');
+    }
+
+    // Validate email field
+    if (!formData.email.trim()) {
+        errors.email = t('validations.error_email_required');
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        errors.email = t('validations.error_email_invalid');
+    }
+
+    // Validate message field
+    if (!formData.message.trim()) {
+        errors.message = t('validations.error_message_required');
+    }
+
+    return errors;
+};
+
+function ContactMe() {
+    const { t } = useTranslation();  // Hook to handle translations
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
         message: '',
     });
-
     const [errors, setErrors] = useState<Partial<FormData>>({});
     const [touched, setTouched] = useState<Partial<FormData>>({});
-    const [loading, setLoading] = useState(false); // New loading state
+    const [loading, setLoading] = useState(false);  // State to manage loading spinner
 
+    // Handle input field changes and update formData
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData((prevFormData) => ({
@@ -27,6 +53,7 @@ function ContactMe() {
         }));
     };
 
+    // Handle input field blur event to mark fields as touched
     const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name } = e.target;
         setTouched((prevTouched) => ({
@@ -35,70 +62,34 @@ function ContactMe() {
         }));
     };
 
+    // Validate form data on any change
     useEffect(() => {
-        const newErrors: Partial<FormData> = {};
-
-        if (!formData.name.trim()) {
-            newErrors.name = t('validations.error_name_required');
-        } else if (formData.name.length > 70) {
-            newErrors.name = t('validations.error_name_max_length');
-        } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(formData.name)) {
-            newErrors.name = t('validations.error_name_invalid');
-        }
-
-        if (!formData.email.trim()) {
-            newErrors.email = t('validations.error_email_required');
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = t('validations.error_email_invalid');
-        }
-
-        if (!formData.message.trim()) {
-            newErrors.message = t('validations.error_message_required');
-        }
-
-        setErrors(newErrors); // Update errors state
-    }, [formData, t]); // Re-run the validation whenever formData changes
+        const validationErrors = validateFormData(formData, t);  // Perform validation
+        setErrors(validationErrors);  // Update errors state
+    }, [formData, t]);
 
     // Handle form submission
     const handleSubmit = async (event: React.FormEvent) => {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();  // Prevent default form submission
 
-        // Mark all fields as touched to trigger validation on submit
+        // Mark all fields as touched to trigger validation
         setTouched({
-            name: true,
-            email: true,
-            message: true,
+            name: 'true',
+            email: 'true',
+            message: 'true',
         });
 
-        const newErrors: Partial<FormData> = {};
+        // Re-validate form data on submit
+        const validationErrors = validateFormData(formData, t);
+        setErrors(validationErrors);
 
-        if (!formData.name.trim()) {
-            newErrors.name = t('validations.error_name_required');
-        } else if (formData.name.length > 70) {
-            newErrors.name = t('validations.error_name_max_length');
-        } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(formData.name)) {
-            newErrors.name = t('validations.error_name_invalid');
-        }
-
-        if (!formData.email.trim()) {
-            newErrors.email = t('validations.error_email_required');
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = t('validations.error_email_invalid');
-        }
-
-        if (!formData.message.trim()) {
-            newErrors.message = t('validations.error_message_required');
-        }
-
-        setErrors(newErrors); // Update errors state
-
-        if (Object.keys(newErrors).length === 0) {
+        // If there are no validation errors, proceed with form submission
+        if (Object.keys(validationErrors).length === 0) {
             try {
-                setLoading(true); // Set loading to true when starting the request
+                setLoading(true);  // Set loading to true when starting the request
+                const response = await SendEmail(formData);  // Call the SendEmail service
 
-                // Send the form data
-                const response = await SendEmail(formData);
-
+                // Show success or error message based on the response
                 if (response.status === 200) {
                     Swal.fire({
                         icon: 'success',
@@ -117,20 +108,20 @@ function ContactMe() {
             } catch (error) {
                 Swal.fire({
                     icon: 'error',
-                    text: t('email_not_sent') + ': ' + error.message,
+                    text: `${t('email_not_sent')}: ${error.message}`,
                     timer: 3000,
                     showConfirmButton: false,
                 });
             } finally {
-                setLoading(false); // Set loading to false once the request is complete
-                setFormData({ name: '', email: '', message: '' });
-                setTouched({});
+                setLoading(false);  // Set loading to false once the request is complete
+                setFormData({ name: '', email: '', message: '' });  // Reset form data
+                setTouched({});  // Reset touched fields
             }
         }
     };
 
     return (
-        <div className="contactMeContainer" id="contactMeContainer">
+        <section className="contactMeContainer" id="contactMeContainer">
             <div className="contactMeTitle">
                 <h2>{t('contact_me_paragraph')}</h2>
             </div>
@@ -145,6 +136,7 @@ function ContactMe() {
                     </>
                 )}
 
+                {/* Name input field */}
                 <div className="inputContainer">
                     <label htmlFor="name">{t('name')}</label>
                     <input
@@ -159,6 +151,7 @@ function ContactMe() {
                     {touched.name && errors.name && <p className="errorMessage">{errors.name}</p>}
                 </div>
 
+                {/* Email input field */}
                 <div className="inputContainer">
                     <label htmlFor="email">{t('email')}</label>
                     <input
@@ -173,6 +166,7 @@ function ContactMe() {
                     {touched.email && errors.email && <p className="errorMessage">{errors.email}</p>}
                 </div>
 
+                {/* Message textarea */}
                 <div className="inputContainer">
                     <label htmlFor="message">{t('message')}</label>
                     <textarea
@@ -186,11 +180,12 @@ function ContactMe() {
                     {touched.message && errors.message && <p className="errorMessage">{errors.message}</p>}
                 </div>
 
+                {/* Submit button */}
                 <button type="submit" disabled={loading}>
                     {t('send')}
                 </button>
             </form>
-        </div>
+        </section>
     );
 }
 

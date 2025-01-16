@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 function Footer() {
     const { t } = useTranslation();  // Hook to access translations
     const [resume, setResume] = useState('');
-
+    // Set the resume link based on the language
     useEffect(() => {
         if (t('language') === 'es') {
             setResume('./Curriculum-JulianPiedra.pdf');
@@ -14,7 +14,7 @@ function Footer() {
         }
     }, [t]);
     return (
-        <div className="footer" id="footer">
+        <footer className="footer" id="footer">
 
             <div className="socialMedia">
                 <a href="https://www.linkedin.com/in/julian-piedra-89a494306" target="_blank">
@@ -32,7 +32,7 @@ function Footer() {
             </div>
 
 
-        </div>
+        </footer>
     );
 }
 

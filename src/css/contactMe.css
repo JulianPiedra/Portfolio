@@ -139,19 +139,6 @@
     .inputContainer {
         width: 80%;
     }
-
-
-    .inputContainer input {
-        background-color: #3b4957;
-        padding: .8rem;
-        width: 100%;
-        border-bottom: 1px solid #868e96;
-        border-radius: 6px;
-        font-size: 15px;
-        color: #ffffff;
-        font-weight: 500;
-    }
-
     .inputContainer textarea {
         width: 100%;
     }

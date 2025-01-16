@@ -8,7 +8,7 @@ function Education() {
 
 
     return (
-        <div className="education" id="education">
+        <section className="education" id="education">
             <div className="educationHeader">
                 <h1>{t('education_title')}</h1>
                 <h2>{t('education_background')}</h2>
@@ -34,7 +34,7 @@ function Education() {
                     <p>{t('higher_education_description')}</p>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

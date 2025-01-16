@@ -2,7 +2,6 @@ import emailjs from '@emailjs/browser';
 import {FormData} from '../models/formData.tsx';
 
 export const SendEmail = async (FormData: FormData) => {
-
     try {
         const result = await emailjs.send(
             'service_4hbjnsj', 
