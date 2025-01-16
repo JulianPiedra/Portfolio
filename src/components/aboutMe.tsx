@@ -51,24 +51,24 @@ function AboutMe() {
                 <div className="aboutMeContent">
                     <ul>
                         <li>
-                            <FontAwesomeIcon icon={faGraduationCap} bounce style={{ color: '#FF6347' }} />
-                            <div className="text">{t('about_me_line_one')}</div>
+                            <FontAwesomeIcon icon={faGraduationCap} bounce style={{ color: '#FF6347' }} className="icon" />
+                            <p className="text">{t('about_me_line_one')}</p>
                         </li>
                         <li>
-                            <FontAwesomeIcon icon={faCode} bounce style={{ color: '#4CAF50' }} />
-                            <div className="text">{t('about_me_line_two')}</div>
+                            <FontAwesomeIcon icon={faCode} bounce style={{ color: '#4CAF50' }} className="icon" />
+                            <p className="text">{t('about_me_line_two')}</p>
                         </li>
                         <li>
-                            <FontAwesomeIcon icon={faLaptop} bounce style={{ color: '#2196F3' }} />
-                            <div className="text">{t('about_me_line_three')}</div>
+                            <FontAwesomeIcon icon={faLaptop} bounce style={{ color: '#2196F3' }} className="icon" />
+                            <p className="text">{t('about_me_line_three')}</p>
                         </li>
                         <li>
-                            <FontAwesomeIcon icon={faCog} bounce style={{ color: '#FF9800' }} />
-                            <div className="text">{t('about_me_line_four')}</div>
+                            <FontAwesomeIcon icon={faCog} bounce style={{ color: '#FF9800' }} className="icon" />
+                            <p className="text">{t('about_me_line_four')}</p>
                         </li>
                         <li>
-                            <FontAwesomeIcon icon={faBullseye} bounce style={{ color: '#9C27B0' }} />
-                            <div className="text">{t('about_me_line_five')}</div>
+                            <FontAwesomeIcon icon={faBullseye} bounce style={{ color: '#9C27B0' }} className="icon" />
+                            <p className="text">{t('about_me_line_five')}</p>
                         </li>
                     </ul>
                 </div>

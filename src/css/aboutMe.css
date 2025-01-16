@@ -41,6 +41,9 @@
 .aboutMeContent li .icon {
     margin-right: 15px;
 }
+.aboutMeContent li .text {
+    margin: 0;
+}
 
 .aboutMeHeader {
     display: flex;
@@ -145,6 +148,7 @@
 
     .aboutMeContent .text {
         font-size: 15px;
+        text-align: left;
     }
 
     .aboutMeContent li .icon {
