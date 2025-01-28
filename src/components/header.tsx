@@ -14,6 +14,13 @@ function Header() {
         setIsMenuOpen(prevState => !prevState); // Toggle the menu open/close
     };
 
+    // Handle clicking outside of the mobile menu to close it
+    const handleClickOutside = (event) => {
+        if (isMenuOpen && !event.target.closest(".mobileNav") && !event.target.closest(".hamburger")) {
+            setIsMenuOpen(false); // Close the menu if clicking outside
+        }
+    };
+
     // Effect to handle scroll event and update the state
     useEffect(() => {
         // Function to check scroll position and update isScrolled state
@@ -26,13 +33,17 @@ function Header() {
         };
 
         window.addEventListener("scroll", handleScroll); // Add scroll event listener
-        return () => window.removeEventListener("scroll", handleScroll); // Clean up event listener on component unmount
-    }, []);
+        window.addEventListener("click", handleClickOutside); // Add click event listener for closing the menu
+        return () => {
+            window.removeEventListener("scroll", handleScroll); // Clean up event listener on component unmount
+            window.removeEventListener("click", handleClickOutside); // Clean up click event listener
+        };
+    }, [isMenuOpen]);
 
     return (
         // Check if the device is mobile to render mobile-specific navigation
         isMobile ? (
-            <nav className={`Header ${isScrolled ? "scrolled" : ""}`}> {/* Add scrolled class when page is scrolled */}
+            <nav className={`Header ${isScrolled ? "scrolled" : ""}`} >  {/* Add scrolled class when page is scrolled */}
                 <div className="navMobile">
                     {/* Logo section */}
                     <div className="logo">
