@@ -4,8 +4,21 @@ import { useTranslation } from 'react-i18next';
 
 function Education() {
     const { t } = useTranslation();  // Hook to access translations
-
-
+    const [selected, setSelected] = useState(0);
+    const values = {
+        0: {
+            alt: "Colegio Francisca Carrasco",
+            text: t('high_school_description')
+        },
+        1: {
+            alt: "Idiomas.cr",
+            text: t('conversation_english_description')
+        },
+        2: {
+            alt: "Colegio Universitario de Cartago",
+            text: t('higher_education_description')
+        },
+    };
 
     return (
         <section className="education" id="education">
@@ -15,24 +28,35 @@ function Education() {
             </div>
 
             <div className="educationContainer">
-                <div className="card">
-                    <img src="https://drecartago.org/circuito2/cole_francisca.png" />
-                    <h2>{t('high_school')}</h2>
-                    <h3>Colegio Francisca Carrasco Jiménez, <span>CR-C</span></h3>
-                    <p>{t('high_school_description')}</p>
+                <div className="buttons">
+                    <div className="selected" style={{ transform: `translateY(${selected * 105}%)` }}></div>
+                    <div className="button" onClick={() => { setSelected(0) }}>
+                        <img src="./francisca.jpg" alt={values[0].alt} />
+                        <div className="buttonText">
+                            <h3>{t('high_school')}</h3>
+                            <h2>Colegio Francisca Carrasco Jiménez, <span>CR-C</span></h2>
+                        </div>
+                    </div>
+                    <div className="button" onClick={() => { setSelected(1) }}>
+                        <img src="./idiomas.jpg" alt={values[1].alt} />
+                        <div className="buttonText">
+                            <h3>{t('conversational_english')}</h3>
+                            <h2>Idiomas.CR, <span>CR-C</span></h2>
+                        </div>
+                    </div>
+                    <div className="button" onClick={() => { setSelected(2) }}>
+                        <img src="./CUC.png" alt={values[2].alt} />
+                        <div className="buttonText">
+                            <h3>{t('higher_education')}</h3>
+                            <h2>Colegio Universitario de Cartago, <span>CR-C</span></h2>
+                        </div>
+                    </div>
                 </div>
+
                 <div className="card">
-                    <img src="https://lh5.googleusercontent.com/p/AF1QipPFpQo9k-591UA74hFtg2UvsJ8kLCf_XRuCxV3R=s467-k-no" />
-                    <h2>{t('conversational_english')}</h2>
-                    <h3>Idiomas.CR, <span>CR-C</span></h3>
-                    <p>{t('conversation_english_description')}</p>
+                    <p>{values[selected].text}</p>
                 </div>
-                <div className="card">
-                    <img src="https://www.larepublica.net/storage/images/2021/11/05/20211105161832.cuc-1.jpg" />
-                    <h2>{t('higher_education')}</h2>
-                    <h3>Colegio Universitario de Cartago, <span>CR-C</span></h3>
-                    <p>{t('higher_education_description')}</p>
-                </div>
+
             </div>
         </section>
     );

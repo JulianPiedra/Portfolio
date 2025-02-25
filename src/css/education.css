@@ -1,5 +1,5 @@
 .education {
-    background-color: rgb(221, 220, 220);
+    background-color: #000;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -17,15 +17,6 @@
 
 }
 
-.educationHeader h1 {
-    color: #151030;
-}
-
-.educationHeader h2 {
-    color: #151030;
-    margin: 0;
-}
-
 .educationContainer {
     display: flex;
     flex-direction: column;
@@ -37,36 +28,62 @@
     height: 100%;
     flex-wrap: wrap;
 }
+.selected {
+    position:absolute;
+    background-color: #151030;
+    width: 100%;
+    height: 32.5%;
+    border-radius: 10px;
+    z-index: 1;
+    transition: all 0.5s ease-in-out;
+}
+.buttons{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+}
+.button {
+    z-index: 99;
+    display: flex;
+    height: 33%;
+    max-width: 300px;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 10px;
+}
+.button:hover {
+    cursor: pointer;
+}
+.button h2, .button h3 {
+    margin: 0;
+    font-size: 15px;
 
+}
+.buttonText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.button img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;    
+}
 .card {
-    width: 19.7%;
+    width: 100%;
+    display: flex;
     min-width: 250px;
-    min-height: 550px;
+    min-height: 400px;
+    max-width: 700px;
     background-color: #151030;
     border-radius: 10px;
     box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
     transition: all 0.5s;
     color: white;
     padding: 1rem;
-}
-
-.card:hover {
-    transform: scale(1.1);
-    box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.2);
-}
-
-.card img {
-    width: 100%;
-    height: 220px;
-    border-radius: 10px;
-}
-
-.card h2 {
-    font-weight: 700;
-}
-
-.card h3 {
-    font-weight: 300;
+    box-sizing: border-box;
 }
 
 .card p {
@@ -74,19 +91,10 @@
     font-size: 18px;
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
     .educationHeader {
         margin-top: 5rem;
         margin-bottom: 2rem;
-    }
-
-    .card h2 {
-        font-weight: 700;
-    }
-
-    .card h3 {
-        font-size: 15px;
-        font-weight: 300;
     }
 
     .card p {
@@ -94,13 +102,9 @@
         font-size: 14px;
     }
 
-    .card img {
-        width: 100%;
-        height: 180px;
-    }
-
     .card {
         min-height: 400px;
+        max-width: 350px;
         transition: all 0.5s;
     }
 
