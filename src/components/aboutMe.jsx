@@ -20,7 +20,7 @@ function AboutMe() {
     // Update resume link dynamically based on selected language
     useEffect(() => {
         const language = t('language'); // Assuming `t('language')` returns the current language
-        setResume(language === 'es' ? './Curriculum-JulianPiedra.pdf' : './Resume-JulianPiedra.pdf');
+        setResume(language === 'es' ? './assets/Curriculum-JulianPiedra.pdf' : './Resume-JulianPiedra.pdf');
     }, [t]);
 
     return (

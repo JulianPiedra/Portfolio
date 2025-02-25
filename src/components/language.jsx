@@ -6,7 +6,7 @@ const Language = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language); // State to keep track of selected language
 
   // Function to change the language when a flag is clicked
-  const handleChangeLanguage = (code: any) => {
+  const handleChangeLanguage = (code) => {
     setSelectedLanguage(code); // Update the selected language state
     i18n.changeLanguage(code); // Change the language using i18n's changeLanguage method
   };
@@ -14,8 +14,8 @@ const Language = () => {
   return (
     <div
       onClick={() => handleChangeLanguage(selectedLanguage === 'en' ? 'es' : 'en')} // Toggle between 'en' and 'es' on click
-      onMouseEnter={(e) => (e.target as HTMLDivElement).style.transform = 'scale(1.1)'} // Scale up on hover
-      onMouseLeave={(e) => (e.target as HTMLDivElement).style.transform = 'scale(1)'} // Scale back to normal when mouse leaves
+      onMouseEnter={(e) => (e.target).style.transform = 'scale(1.1)'} // Scale up on hover
+      onMouseLeave={(e) => (e.target).style.transform = 'scale(1)'} // Scale back to normal when mouse leaves
     >
 
       {/* Flag image based on the selected language */}

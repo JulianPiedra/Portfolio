@@ -20,5 +20,5 @@ i18n
       escapeValue: false, 
     },
   });
-
+  console.log(i18n)
 export default i18n;

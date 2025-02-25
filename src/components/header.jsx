@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import '../css/header.css';
 import { useTranslation } from 'react-i18next';
-import Language from './language.tsx'; // Importing Language component
+import Language from './language.jsx'; // Importing Language component
 import { isMobile } from 'react-device-detect'; // Checking if the device is mobile
 
 function Header() {

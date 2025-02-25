@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import '../css/contactMe.css';
 import { useTranslation } from 'react-i18next';
-import { FormData } from '../models/formData.tsx';
 import { SendEmail } from '../services/emailSender.tsx';
 import Swal from "sweetalert2";
-
+//
+export interface FormData {
+    name: string;
+    email: string;
+    message: string;
+}
 // Function to validate form data
 const validateFormData = (formData: FormData, t: Function): Partial<FormData> => {
     const errors: Partial<FormData> = {};
