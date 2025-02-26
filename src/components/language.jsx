@@ -9,6 +9,7 @@ const Language = () => {
   const handleChangeLanguage = (code) => {
     setSelectedLanguage(code); // Update the selected language state
     i18n.changeLanguage(code); // Change the language using i18n's changeLanguage method
+    localStorage.setItem('language', code); // Save the selected language to local storage
   };
 
   return (

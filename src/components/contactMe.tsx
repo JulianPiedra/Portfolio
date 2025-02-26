@@ -3,6 +3,8 @@ import '../css/contactMe.css';
 import { useTranslation } from 'react-i18next';
 import { SendEmail } from '../services/emailSender.tsx';
 import Swal from "sweetalert2";
+import { faUser, faMessage, faMailBulk } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //
 export interface FormData {
     name: string;
@@ -139,40 +141,40 @@ function ContactMe() {
                         <div className="spinner"></div>
                     </>
                 )}
+                <div className="inputFields">
+                    {/* Name input field */}
+                    <div className="inputContainer">
+                        <label htmlFor="name"><FontAwesomeIcon icon={faUser} bounce style={{ color: '#BE09F5' }} className="icon" /> {t('name')}</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder={t('name_portfolio')}
+                            value={formData.name}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                        />
+                        <label className="errorMessage">{errors.name}</label>
+                    </div>
 
-                {/* Name input field */}
-                <div className="inputContainer">
-                    <label htmlFor="name">{t('name')}</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder={t('name_portfolio')}
-                        value={formData.name}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                    />
-                    {touched.name && errors.name && <p className="errorMessage">{errors.name}</p>}
+                    {/* Email input field */}
+                    <div className="inputContainer">
+                        <label htmlFor="email"><FontAwesomeIcon icon={faMailBulk} bounce style={{ color: '#BE09F5' }} className="icon" />{t('email')}</label>
+                        <input
+                            type="text"
+                            id="email"
+                            name="email"
+                            placeholder={t('email_example')}
+                            value={formData.email}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                        />
+                        <label className="errorMessage">{errors.email}</label>
+                    </div>
                 </div>
-
-                {/* Email input field */}
-                <div className="inputContainer">
-                    <label htmlFor="email">{t('email')}</label>
-                    <input
-                        type="text"
-                        id="email"
-                        name="email"
-                        placeholder={t('email_example')}
-                        value={formData.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                    />
-                    {touched.email && errors.email && <p className="errorMessage">{errors.email}</p>}
-                </div>
-
                 {/* Message textarea */}
                 <div className="inputContainer">
-                    <label htmlFor="message">{t('message')}</label>
+                    <label htmlFor="message"><FontAwesomeIcon icon={faMessage} bounce style={{ color: '#BE09F5' }} className="icon" />  {t('message')}</label>
                     <textarea
                         id="message"
                         name="message"
@@ -181,7 +183,7 @@ function ContactMe() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                     ></textarea>
-                    {touched.message && errors.message && <p className="errorMessage">{errors.message}</p>}
+                   <p className="errorMessage">{errors.message}</p>
                 </div>
 
                 {/* Submit button */}

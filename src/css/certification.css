@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    height: fit-content ;
+    height: fit-content;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -13,8 +13,8 @@
 
 .certificationHeader {
     text-align: center;
-    margin-bottom:2rem;
-    margin-top:6rem;
+    margin-bottom: 2rem;
+    margin-top: 6rem;
 }
 
 .certificationHeader h1 {
@@ -42,17 +42,17 @@
     max-width: 550px;
     min-height: fit-content;
     border-radius: 10px;
-    background-color: rgb(221, 220, 220);
+    background-color: #be09f5a1;
     box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
     transition: all 0.5s;
-    color: black;
     padding: 1rem;
     align-items: center;
     text-align: center;
     text-decoration: none;
     justify-content: space-evenly;
-    
+
 }
+
 .certificationContainer .card .info {
     display: flex;
     flex-direction: column;
@@ -70,48 +70,52 @@
     border-radius: 50%;
 }
 
-.certificationContainer .card p{
+.certificationContainer .card p {
     margin: auto;
 }
-.certificationContainer .card p:first-child{
+
+.certificationContainer .card p:first-child {
     font-weight: 700;
     margin: auto;
 }
-.external-link {
-    color: #007bff; 
-    text-decoration: underline; 
-    cursor: pointer; 
-  }
-  
-  .external-link:hover {
-    color: #0056b3; 
-    text-decoration: none; 
-  }
-  
-  .external-link:active {
-    color: #003f7f; 
-  }
-  
 
-@media  (max-width: 768px) {
-        .certificationContainer {
+.issuerLink {
+
+    color: #007bff;
+    cursor: pointer;
+}
+
+.issuerLink:hover {
+    color: #0056b3;
+}
+
+.issuerLink:active {
+    color: #003f7f;
+}
+
+
+@media (max-width: 768px) {
+    .certificationContainer {
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
+
     .certificationContainer .card {
         width: 80%;
     }
+
     .certificationContainer .card img {
         width: 80px;
         height: 80px;
     }
-    .certificationContainer .card p{
+
+    .certificationContainer .card p {
         margin: auto;
     }
-    .certificationContainer .card p:first-child{
+
+    .certificationContainer .card p:first-child {
         font-weight: 700;
         margin: auto;
     }
 }
-

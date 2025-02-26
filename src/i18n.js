@@ -9,12 +9,12 @@ const resources = {
   en: { translation: translationEN },
   es: { translation: translationES }
 };
-
+const lang = localStorage.getItem('language') || localStorage.setItem('language', 'en');
 i18n
   .use(initReactI18next) // Add react-i18next to the i18n instance
   .init({
     resources,
-    lng: 'en', // Default language
+    lng: lang, // Default language
     fallbackLng: 'en', // Backup
     interpolation: {
       escapeValue: false, 

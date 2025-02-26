@@ -10,7 +10,7 @@ function CertificationCard ({ href, imageSrc, title, issuer, certificateDescript
                 <p>
                     {issuer} 
                     <span className="external-link">
-                        <a href={issuerLink} target="_blank" rel="noopener noreferrer">{site}</a>
+                        <a href={issuerLink} target="_blank" rel="noopener noreferrer" className="issuerLink">{site}</a>
                     </span>
                 </p>
                 <p>{certificateDescription}</p>

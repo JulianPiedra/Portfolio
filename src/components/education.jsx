@@ -54,7 +54,15 @@ function Education() {
                 </div>
 
                 <div className="card">
-                    <p>{values[selected].text}</p>
+                    <h2>{values[selected].alt}</h2>
+                    <p>
+                        {values[selected].text.split("\n").map((line, index) => (
+                            <span key={index}>
+                                {line}
+                                <br />
+                            </span>
+                        ))}
+                    </p>
                 </div>
 
             </div>
