@@ -154,7 +154,7 @@ function ContactMe() {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {touched.name && errors.name && <label className="errorMessage">{errors.name}</label>}
+                        {touched.name && errors.name && <p className="errorMessage">{errors.name}</p>}
                     </div>
 
                     {/* Email input field */}
@@ -169,7 +169,7 @@ function ContactMe() {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {touched.email && errors.email && <label className="errorMessage">{errors.email}</label>}
+                        {touched.email && errors.email && <p className="errorMessage">{errors.email}</p>}
                     </div>
                 </div>
                 {/* Message textarea */}
