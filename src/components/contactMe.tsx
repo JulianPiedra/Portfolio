@@ -154,12 +154,12 @@ function ContactMe() {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        <label className="errorMessage">{errors.name}</label>
+                        {touched.name && errors.name && <label className="errorMessage">{errors.name}</label>}
                     </div>
 
                     {/* Email input field */}
                     <div className="inputContainer">
-                        <label htmlFor="email"><FontAwesomeIcon icon={faMailBulk} bounce style={{ color: '#BE09F5' }} className="icon" />{t('email')}</label>
+                        <label htmlFor="email"><FontAwesomeIcon icon={faMailBulk} bounce style={{ color: '#BE09F5' }} className="icon" /> {t('email')}</label>
                         <input
                             type="text"
                             id="email"
@@ -169,7 +169,7 @@ function ContactMe() {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        <label className="errorMessage">{errors.email}</label>
+                        {touched.email && errors.email && <label className="errorMessage">{errors.email}</label>}
                     </div>
                 </div>
                 {/* Message textarea */}
@@ -183,7 +183,7 @@ function ContactMe() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                     ></textarea>
-                   <p className="errorMessage">{errors.message}</p>
+                   {touched.message && errors.message && <p className="errorMessage">{errors.message}</p>}
                 </div>
 
                 {/* Submit button */}
