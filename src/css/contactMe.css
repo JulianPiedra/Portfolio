@@ -135,7 +135,7 @@
 
 @media (max-width: 768px) {
     .contactMeForm {
-        width: 80%;
+        width: 85%;
     }
 
     .inputContainer {
@@ -143,5 +143,8 @@
     }
     .inputContainer textarea {
         width: 100%;
+    }
+    .inputContainer label {
+        font-size: 15px;
     }
 }
