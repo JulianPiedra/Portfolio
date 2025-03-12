@@ -23,13 +23,24 @@ html {
     padding: 0;
     height: 100%;
 }
-@keyframes moveRight {
+@keyframes skillConveyor {
     0% {
         transform: translateX(0);
     }
 
     100% {
         transform: translateX(-100%);
+    }
+}
+@keyframes moveRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
     }
 }
 @keyframes fadeInUp {

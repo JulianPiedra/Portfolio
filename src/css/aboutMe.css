@@ -55,6 +55,12 @@
     align-items: center;
     margin: 0 auto;
 }
+.aboutMeHeader.fadeInUp {
+    animation: fadeInUp 1s ease-out forwards;
+}
+.aboutMeContent li .text.moveRight {
+    animation: moveRight 1s ease-out forwards;
+}
 
 .socialMedia {
     display: flex;
@@ -103,7 +109,7 @@
 
 .skillSlide {
     display: inline-flex;
-    animation: moveRight 20s linear infinite;
+    animation: skillConveyor 20s linear infinite;
     white-space: nowrap;
 }
 

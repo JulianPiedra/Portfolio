@@ -17,10 +17,10 @@ function Portfolio() {
       </div>
       {/*Portfolio content*/}
       <div className="portfolio" >
-        <h1 className={isLoaded ? 'fade-in-up' : ''}>{t('portfolio_line_one')}</h1>
-        <h1 className={isLoaded ? 'fade-in-up' : ''}>{t('name_intro')}<span>{t('name_portfolio')}</span></h1>
-        <h2 className={isLoaded ? 'fade-in-up' : ''}>{t('introduction')}</h2>
-        <a className={isLoaded ? 'fade-in-up' : ''} href="#aboutMe">{t('get_to_know_me')}</a>
+        <h1 >{t('portfolio_line_one')}</h1>
+        <h1 >{t('name_intro')}<span>{t('name_portfolio')}</span></h1>
+        <h2 >{t('introduction')}</h2>
+        <a href="#aboutMe">{t('get_to_know_me')}</a>
       </div>
 
 
