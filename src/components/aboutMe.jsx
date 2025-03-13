@@ -5,10 +5,11 @@ import { faGraduationCap, faCode, faLaptop, faCog, faBullseye } from "@fortaweso
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function AboutMe() {
-    const { t } = useTranslation();  
+    const { t } = useTranslation();
     const [resume, setResume] = useState("");
     const [isVisible, setIsVisible] = useState(false);
-    const aboutMeRef = useRef(null); // Referencia al contenedor para observar
+    const [hasAnimated, setHasAnimated] = useState(false);
+    const aboutMeRef = useRef(null);
 
     const skills = [
         "C#", "C++", "C", "VB.NET", "JavaScript", "React", "Node.js",
@@ -23,9 +24,12 @@ function AboutMe() {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIsVisible(entry.isIntersecting);
+                if (entry.isIntersecting && !hasAnimated) {
+                    setIsVisible(true);
+                    setHasAnimated(true);
+                }
             },
-            { threshold: 0.2 } 
+            { threshold: 0.3 }
         );
 
         if (aboutMeRef.current) {
@@ -37,18 +41,18 @@ function AboutMe() {
                 observer.unobserve(aboutMeRef.current);
             }
         };
-    }, []);
+    }, [hasAnimated]);
 
     return (
         <section className="aboutMe" id="aboutMe" ref={aboutMeRef}>
             <div className="aboutMeContainer">
-                <div className={`aboutMeHeader ${isVisible ? "fadeInUp" : ""}`}>
-                    <div className="intro">
+                <div className="aboutMeHeader">
+                    <div className={`intro ${isVisible ? "fadeInUp" : ""}`}>
                         <h1>{t("about_me")}</h1>
                         <h2>{t("about_me_explore")}</h2>
                     </div>
 
-                    <div className="socialMedia">
+                    <div className={`socialMedia ${isVisible ? "scaleUp" : ""}`}>
                         <a href="https://www.linkedin.com/in/julian-piedra-89a494306" target="_blank" rel="noopener noreferrer">
                             <img src="./linkedin.svg" alt="LinkedIn Icon" />
                         </a>
@@ -87,8 +91,8 @@ function AboutMe() {
                 </div>
             </div>
 
-             {/* Skills Section */}
-             <div className="skillsList">
+            {/* Skills Section */}
+            <div className="skillsList">
                 <div className="skillConveyor">
                     {/* Create a sliding effect for skills */}
                     {Array(2).fill(null).map((_, slideIndex) => (
@@ -96,7 +100,7 @@ function AboutMe() {
                             {skills.map((skill, index) => (
                                 <span key={`${slideIndex}-${index}`} className="skills">{skill}</span>
                             ))}
-                        </div>
+                        </div>  
                     ))}
                 </div>
             </div>

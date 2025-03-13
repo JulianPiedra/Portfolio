@@ -55,11 +55,14 @@
     align-items: center;
     margin: 0 auto;
 }
-.aboutMeHeader.fadeInUp {
+.intro.fadeInUp {
     animation: fadeInUp 1s ease-out forwards;
 }
 .aboutMeContent li .text.moveRight {
     animation: moveRight 1s ease-out forwards;
+}
+.socialMedia.scaleUp {
+    animation: scaleUp 1s ease-out forwards;
 }
 
 .socialMedia {
