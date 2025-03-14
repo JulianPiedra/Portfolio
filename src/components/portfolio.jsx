@@ -1,14 +1,8 @@
-import { useEffect, useState } from "react";
 import React from "react";
 import '../css/portfolio.css'
 import { useTranslation } from 'react-i18next';
 function Portfolio() {
   const { t } = useTranslation();
-  const [isLoaded, setIsLoaded] = useState(false);
-  //animations on load
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
   return (
     <section id="portfolio">
       {/*Background video*/}

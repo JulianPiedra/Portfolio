@@ -23,6 +23,25 @@ html {
     padding: 0;
     height: 100%;
 }
+
+.intro.fadeInUp {
+    animation: fadeInUp 2s ease-out forwards;
+}
+
+.aboutMeContent li .text.moveRight, .card.moveRight {
+    animation: moveRight 1s ease-out forwards;
+}
+.card.moveLeft {
+    animation: moveLeft 1s ease-out forwards;
+}
+.socialMedia.scaleUp {
+    animation: scaleUp 1s ease-out forwards;
+}
+.certificationHeader.fadeInDown {
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+
 @keyframes skillConveyor {
     0% {
         transform: translateX(0);
@@ -32,6 +51,7 @@ html {
         transform: translateX(-100%);
     }
 }
+
 @keyframes moveRight {
     0% {
         opacity: 0;
@@ -43,6 +63,7 @@ html {
         transform: translateX(0%);
     }
 }
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -54,6 +75,17 @@ html {
         transform: translateY(0);
     }
 }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 @keyframes moveLeft {
     0% {
         opacity: 0;
@@ -77,6 +109,7 @@ html {
         transform: translateY(0);
     }
 }
+
 @keyframes scaleUp {
     0% {
         opacity: 0;
@@ -88,6 +121,7 @@ html {
         transform: scale(1);
     }
 }
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -97,6 +131,7 @@ html {
         transform: rotate(360deg);
     }
 }
+
 @media (max-width: 768px) {
     body {
         font-size: 12px;

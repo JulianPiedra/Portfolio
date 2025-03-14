@@ -1,10 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import '../css/education.css';
 import { useTranslation } from 'react-i18next';
 
 function Education() {
     const { t } = useTranslation();  // Hook to access translations
     const [selected, setSelected] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
+        const [hasAnimated, setHasAnimated] = useState(false);
+        const educationRef = useRef(null);
+        useEffect(() => {
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        setIsVisible(true);
+                        setHasAnimated(true);
+                    }
+                },
+                { threshold: 0.1 }
+            );
+    
+            if (educationRef.current) {
+                observer.observe(educationRef.current);
+            }
+    
+            return () => {
+                if (educationRef.current) {
+                    observer.unobserve(educationRef.current);
+                }
+            };
+        }, [hasAnimated]);
     const values = {
         0: {
             alt: "Colegio Francisca Carrasco",
@@ -21,7 +45,7 @@ function Education() {
     };
 
     return (
-        <section className="education" id="education">
+        <section className="education" id="education" ref={educationRef}>
             <div className="educationHeader">
                 <h1>{t('education_title')}</h1>
                 <h2>{t('education_background')}</h2>

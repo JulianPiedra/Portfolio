@@ -21,6 +21,7 @@ function AboutMe() {
         setResume(language === "es" ? "./assets/Curriculum-JulianPiedra.pdf" : "./Resume-JulianPiedra.pdf");
     }, [t]);
 
+    
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -29,7 +30,7 @@ function AboutMe() {
                     setHasAnimated(true);
                 }
             },
-            { threshold: 0.3 }
+            { threshold: 0.1 }
         );
 
         if (aboutMeRef.current) {
@@ -68,7 +69,7 @@ function AboutMe() {
                 <div className="aboutMeContent">
                     <ul>
                         <li>
-                            <FontAwesomeIcon icon={faGraduationCap} bounce style={{ color: "#FF6347" }} className="icon" />
+                            <FontAwesomeIcon icon={faGraduationCap} bounce style={{ color: "#FF6347" }} className="icon" /> 
                             <p className={`text ${isVisible ? "moveRight" : ""}`}>{t("about_me_line_one")}</p>
                         </li>
                         <li>

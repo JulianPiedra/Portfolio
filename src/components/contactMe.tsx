@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import '../css/contactMe.css';
 import { useTranslation } from 'react-i18next';
 import { SendEmail } from '../services/emailSender.tsx';
@@ -11,35 +11,35 @@ export interface FormData {
     email: string;
     message: string;
 }
-// Function to validate form data
-const validateFormData = (formData: FormData, t: Function): Partial<FormData> => {
-    const errors: Partial<FormData> = {};
 
-    // Validate name field
-    if (!formData.name.trim()) {
-        errors.name = t('validations.error_name_required');
-    } else if (formData.name.length > 70) {
-        errors.name = t('validations.error_name_max_length');
-    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(formData.name)) {
-        errors.name = t('validations.error_name_invalid');
-    }
 
-    // Validate email field
-    if (!formData.email.trim()) {
-        errors.email = t('validations.error_email_required');
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        errors.email = t('validations.error_email_invalid');
-    }
-
-    // Validate message field
-    if (!formData.message.trim()) {
-        errors.message = t('validations.error_message_required');
-    }
-
-    return errors;
-};
 
 function ContactMe() {
+    const [isVisible, setIsVisible] = useState(false);
+    const [hasAnimated, setHasAnimated] = useState(false);
+    const contactMeRef = useRef(null);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    setIsVisible(true);
+                    setHasAnimated(true);
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (contactMeRef.current) {
+            observer.observe(contactMeRef.current);
+        }
+
+        return () => {
+            if (contactMeRef.current) {
+                observer.unobserve(contactMeRef.current);
+            }
+        };
+    }, [hasAnimated]);
+
     const { t } = useTranslation();  // Hook to handle translations
     const [formData, setFormData] = useState<FormData>({
         name: '',
@@ -68,6 +68,34 @@ function ContactMe() {
         }));
     };
 
+    // Function to validate form data
+const validateFormData = (formData: FormData, t: Function): Partial<FormData> => {
+    const errors: Partial<FormData> = {};
+
+
+    // Validate name field
+    if (!formData.name.trim()) {
+        errors.name = t('validations.error_name_required');
+    } else if (formData.name.length > 70) {
+        errors.name = t('validations.error_name_max_length');
+    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(formData.name)) {
+        errors.name = t('validations.error_name_invalid');
+    }
+
+    // Validate email field
+    if (!formData.email.trim()) {
+        errors.email = t('validations.error_email_required');
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        errors.email = t('validations.error_email_invalid');
+    }
+
+    // Validate message field
+    if (!formData.message.trim()) {
+        errors.message = t('validations.error_message_required');
+    }
+
+    return errors;
+};
     // Validate form data on any change
     useEffect(() => {
         const validationErrors = validateFormData(formData, t);  // Perform validation
@@ -127,7 +155,7 @@ function ContactMe() {
     };
 
     return (
-        <section className="contactMeContainer" id="contactMeContainer">
+        <section className="contactMeContainer" id="contactMeContainer" ref={contactMeRef}>
             <div className="contactMeTitle">
                 <h2>{t('contact_me_paragraph')}</h2>
             </div>
@@ -174,7 +202,8 @@ function ContactMe() {
                 </div>
                 {/* Message textarea */}
                 <div className="inputContainer">
-                    <label htmlFor="message"><FontAwesomeIcon icon={faMessage} bounce style={{ color: '#BE09F5' }} className="icon" />  {t('message')}</label>
+                    <label htmlFor="message">
+                        <FontAwesomeIcon icon={faMessage} bounce style={{ color: '#BE09F5' }} className="icon" />  {t('message')}</label>
                     <textarea
                         id="message"
                         name="message"
@@ -183,7 +212,7 @@ function ContactMe() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                     ></textarea>
-                   {touched.message && errors.message && <p className="errorMessage">{errors.message}</p>}
+                    {touched.message && errors.message && <p className="errorMessage">{errors.message}</p>}
                 </div>
 
                 {/* Submit button */}
