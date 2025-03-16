@@ -39,6 +39,27 @@ function Header() {
             window.removeEventListener("click", handleClickOutside); // Clean up click event listener
         };
     }, [isMenuOpen]);
+    const NavLinks = (showLanguage) => {
+        return (
+            <ul>
+                <li>
+                    <a href="#aboutMe">{t('about_me_title')} </a>
+                </li>
+                <li>
+                    <a href="#education">{t('education_title')}</a>
+                </li>
+                <li>
+                    <a href="#certification">{t('certification_title')}</a>
+                </li>
+                <li>
+                    <a href="#contactMeContainer">{t('contact_me_title')}</a>
+                </li>
+                {showLanguage && <Language />}
+            </ul>
+        );
+    }
+
+
 
     return (
         // Check if the device is mobile to render mobile-specific navigation
@@ -54,36 +75,23 @@ function Header() {
 
                     {/* Navigation options */}
                     <div className="options">
+                        {/* Language component */}
+                        <Language />
+
                         {/* Hamburger icon to open/close mobile menu */}
                         <div className="hamburger" onClick={toggleMenu}>
                             <span className={`bar ${isMenuOpen ? "open" : ""}`}></span>
                             <span className={`bar ${isMenuOpen ? "open" : ""}`}></span>
                             <span className={`bar ${isMenuOpen ? "open" : ""}`}></span>
                         </div>
-
-                        {/* Language selector component */}
-                        <Language />
                     </div>
                 </div>
 
                 {/* Mobile menu: Appears when isMenuOpen is true */}
                 {isMenuOpen && (
                     <aside className="mobileNav">
-                        <ul>
-                            {/* Mobile navigation links */}
-                            <li>
-                                <a href="#aboutMe" onClick={toggleMenu}>{t('about_me_title')} </a>
-                            </li>
-                            <li>
-                                <a href="#education" onClick={toggleMenu}>{t('education_title')}</a>
-                            </li>
-                            <li>
-                                <a href="#certification" onClick={toggleMenu}>{t('certification_title')}</a>
-                            </li>
-                            <li>
-                                <a href="#contactMeContainer" onClick={toggleMenu}>{t('contact_me_title')}</a>
-                            </li>
-                        </ul>
+                        {/* Navigation links */}
+                        <NavLinks showLanguage={false} />
                     </aside>
                 )}
             </nav>
@@ -98,26 +106,9 @@ function Header() {
                         </a>
                     </div>
 
-                    {/* Desktop navigation links */}
-                    <ul>
-                        <li>
-                            <a href="#aboutMe">{t('about_me_title')} </a>
-                        </li>
-                        <li>
-                            <a href="#education">{t('education_title')}</a>
-                        </li>
-                        <li>
-                            <a href="#certification">{t('certification_title')}</a>
-                        </li>
-                        <li>
-                            <a href="#contactMeContainer">{t('contact_me_title')}</a>
-                        </li>
-
-                        {/* Language selector */}
-                        <li>
-                            <Language />
-                        </li>
-                    </ul>
+                    {/* Navigation links */}
+                    <NavLinks showLanguage={true} />
+                    {/* Language component */}
                 </div>
             </nav>
         )

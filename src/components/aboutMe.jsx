@@ -21,7 +21,7 @@ function AboutMe() {
         setResume(language === "es" ? "./assets/Curriculum-JulianPiedra.pdf" : "./Resume-JulianPiedra.pdf");
     }, [t]);
 
-    
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -69,7 +69,7 @@ function AboutMe() {
                 <div className="aboutMeContent">
                     <ul>
                         <li>
-                            <FontAwesomeIcon icon={faGraduationCap} bounce style={{ color: "#FF6347" }} className="icon" /> 
+                            <FontAwesomeIcon icon={faGraduationCap} bounce style={{ color: "#FF6347" }} className="icon" />
                             <p className={`text ${isVisible ? "moveRight" : ""}`}>{t("about_me_line_one")}</p>
                         </li>
                         <li>
@@ -93,16 +93,14 @@ function AboutMe() {
             </div>
 
             {/* Skills Section */}
-            <div className="skillsList">
+            <div className={`skillsList ${isVisible ? 'scaleUp' : ''}`}>
                 <div className="skillConveyor">
-                    {/* Create a sliding effect for skills */}
-                    {Array(2).fill(null).map((_, slideIndex) => (
-                        <div className="skillSlide" key={slideIndex}>
-                            {skills.map((skill, index) => (
-                                <span key={`${slideIndex}-${index}`} className="skills">{skill}</span>
-                            ))}
-                        </div>  
-                    ))}
+                    {/* Duplicar la lista de habilidades para crear un bucle infinito */}
+                    <div className="skillSlide">
+                        {Array(3).fill(skills).flat().map((skill, index) => (
+                            <span key={index} className="skills">{skill}</span>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

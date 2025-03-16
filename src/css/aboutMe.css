@@ -81,47 +81,43 @@
 }
 
 .skillsList {
-    width: 70%;
+    width: 80%;
     height: 50px;
     content-visibility: auto;
     overflow: hidden;
     will-change: transform;
     border-radius: 20px;
-    margin-bottom: 3rem;
-}
-
-.skillConveyor {
+    margin-top: 3rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .skillConveyor {
     display: flex;
     color: white;
     flex-direction: row;
     gap: 20px;
-    width: 200%;
     justify-content: center;
     align-items: center;
     position: relative;
-}
-
-
-.skillSlide {
-    display: inline-flex;
-    animation: skillConveyor 20s linear infinite;
-    white-space: nowrap;
-}
-
-
-
-.skillConveyor .skillSlide {
+    animation: skillConveyorAnimation 10s linear infinite;
+  }
+  
+  .skillSlide {
     display: flex;
     gap: 20px;
-}
-
-.skills {
+  }
+  
+  .skills {
+    white-space: nowrap;
     background-color: #3b4957;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 20px;
-}
+    white-space: nowrap;
+  }
 
-
+  
 
 @media (max-width: 768px) {
         .aboutMeContainer {
