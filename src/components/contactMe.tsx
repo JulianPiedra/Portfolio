@@ -26,7 +26,7 @@ function ContactMe() {
                     setHasAnimated(true);
                 }
             },
-            { threshold: 0.1 }
+            { threshold: 0.2 }
         );
 
         if (contactMeRef.current) {
@@ -155,12 +155,13 @@ const validateFormData = (formData: FormData, t: Function): Partial<FormData> =>
     };
 
     return (
+
         <section className="contactMeContainer" id="contactMeContainer" ref={contactMeRef}>
-            <div className="contactMeTitle">
+            <div className={`contactMeTitle ${isVisible ? "fadeInUp" : ""}`}>
                 <h2>{t('contact_me_paragraph')}</h2>
             </div>
-            <form className="contactMeForm" onSubmit={handleSubmit}>
-                <h1>{t('contact_me_title')}</h1>
+            <form className={`contactMeForm ${isVisible ? "moveUp" : ""}`} onSubmit={handleSubmit}>
+                <h1 className={`contactMeTitle ${isVisible ? "fadeIn" : ""}`}>{t('contact_me_title')}</h1>
 
                 {/* Display the overlay and spinner when loading */}
                 {loading && (
@@ -171,8 +172,8 @@ const validateFormData = (formData: FormData, t: Function): Partial<FormData> =>
                 )}
                 <div className="inputFields">
                     {/* Name input field */}
-                    <div className="inputContainer">
-                        <label htmlFor="name"><FontAwesomeIcon icon={faUser} bounce style={{ color: '#BE09F5' }} className="icon" /> {t('name')}</label>
+                    <div className={`inputContainer ${isVisible ? "scaleUp" : ""}`}>
+                    <label htmlFor="name"><FontAwesomeIcon icon={faUser} bounce style={{ color: '#BE09F5' }} className="icon" /> {t('name')}</label>
                         <input
                             type="text"
                             id="name"
@@ -186,8 +187,8 @@ const validateFormData = (formData: FormData, t: Function): Partial<FormData> =>
                     </div>
 
                     {/* Email input field */}
-                    <div className="inputContainer">
-                        <label htmlFor="email"><FontAwesomeIcon icon={faMailBulk} bounce style={{ color: '#BE09F5' }} className="icon" /> {t('email')}</label>
+                    <div className={`inputContainer ${isVisible ? "scaleUp" : ""}`}>
+                    <label htmlFor="email"><FontAwesomeIcon icon={faMailBulk} bounce style={{ color: '#BE09F5' }} className="icon" /> {t('email')}</label>
                         <input
                             type="text"
                             id="email"
@@ -201,8 +202,8 @@ const validateFormData = (formData: FormData, t: Function): Partial<FormData> =>
                     </div>
                 </div>
                 {/* Message textarea */}
-                <div className="inputContainer">
-                    <label htmlFor="message">
+                <div className={`inputContainer ${isVisible ? "scaleUp" : ""}`}>
+                <label htmlFor="message">
                         <FontAwesomeIcon icon={faMessage} bounce style={{ color: '#BE09F5' }} className="icon" />  {t('message')}</label>
                     <textarea
                         id="message"
@@ -216,7 +217,7 @@ const validateFormData = (formData: FormData, t: Function): Partial<FormData> =>
                 </div>
 
                 {/* Submit button */}
-                <button type="submit" disabled={loading}>
+                <button type="submit" disabled={loading} className={`submitBtn ${isVisible ? "scaleUp" : ""}`}>
                     {t('send')}
                 </button>
             </form>

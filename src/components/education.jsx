@@ -3,32 +3,46 @@ import '../css/education.css';
 import { useTranslation } from 'react-i18next';
 
 function Education() {
-    const { t } = useTranslation();  // Hook to access translations
+    const { t } = useTranslation();
     const [selected, setSelected] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
-        const [hasAnimated, setHasAnimated] = useState(false);
-        const educationRef = useRef(null);
-        useEffect(() => {
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        setIsVisible(true);
-                        setHasAnimated(true);
-                    }
-                },
-                { threshold: 0.1 }
-            );
-    
-            if (educationRef.current) {
-                observer.observe(educationRef.current);
-            }
-    
-            return () => {
-                if (educationRef.current) {
-                    observer.unobserve(educationRef.current);
+    const [hasAnimated, setHasAnimated] = useState(false);
+    const [animationComplete, setAnimationComplete] = useState(false); // Track animation completion
+    const educationRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    setIsVisible(true);
+                    setHasAnimated(true);
                 }
-            };
-        }, [hasAnimated]);
+            },
+            { threshold: 0.2 }
+        );
+
+        if (educationRef.current) {
+            observer.observe(educationRef.current);
+        }
+
+        return () => {
+            if (educationRef.current) {
+                observer.unobserve(educationRef.current);
+            }
+        };
+    }, [hasAnimated]);
+
+    useEffect(() => {
+        if (isVisible) {
+            // Set a timeout to remove the scaleUp class after the animation duration (1s in this case)
+            const timeout = setTimeout(() => {
+                setAnimationComplete(true);
+            }, 1000); // matches the duration of the scaleUp animation
+
+            return () => clearTimeout(timeout); // Cleanup timeout on unmount or re-render
+        }
+    }, [isVisible]);
+
     const values = {
         0: {
             alt: "Colegio Francisca Carrasco",
@@ -46,14 +60,14 @@ function Education() {
 
     return (
         <section className="education" id="education" ref={educationRef}>
-            <div className="educationHeader">
+            <div className={`educationHeader ${isVisible ? "fadeInDown" : ""}`}>
                 <h1>{t('education_title')}</h1>
                 <h2>{t('education_background')}</h2>
             </div>
 
             <div className="educationContainer">
                 <div className="buttons">
-                    <div className="selected" style={{ transform: `translateY(${selected * 105}%)` }}></div>
+                    <div className={`selected ${isVisible && !animationComplete ? "scaleUp" : ""}`} style={{ transform: `translateY(${selected * 105}%)` }}></div>
                     <div className="button" onClick={() => { setSelected(0) }}>
                         <img src="./francisca.jpg" alt={values[0].alt} />
                         <div className="buttonText">
@@ -77,7 +91,7 @@ function Education() {
                     </div>
                 </div>
 
-                <div className="card">
+                <div className={`card ${isVisible ? "moveRight" : ""}`}>
                     <h2>{values[selected].alt}</h2>
                     <p>
                         {values[selected].text.split("\n").map((line, index) => (
@@ -88,7 +102,6 @@ function Education() {
                         ))}
                     </p>
                 </div>
-
             </div>
         </section>
     );

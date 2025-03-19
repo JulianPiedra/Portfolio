@@ -30,7 +30,7 @@ function AboutMe() {
                     setHasAnimated(true);
                 }
             },
-            { threshold: 0.1 }
+            { threshold: 0.2 }
         );
 
         if (aboutMeRef.current) {
@@ -43,6 +43,7 @@ function AboutMe() {
             }
         };
     }, [hasAnimated]);
+    
 
     return (
         <section className="aboutMe" id="aboutMe" ref={aboutMeRef}>
@@ -95,7 +96,7 @@ function AboutMe() {
             {/* Skills Section */}
             <div className={`skillsList ${isVisible ? 'scaleUp' : ''}`}>
                 <div className="skillConveyor">
-                    {/* Duplicar la lista de habilidades para crear un bucle infinito */}
+                    {/*  Duplicate skills to generate a continuos loop */}
                     <div className="skillSlide">
                         {Array(3).fill(skills).flat().map((skill, index) => (
                             <span key={index} className="skills">{skill}</span>
