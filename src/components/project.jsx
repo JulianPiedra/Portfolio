@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 function Project() {
     const { t } = useTranslation();
     return (
-        <section id="portfolio">
+        <section  className="project" id="project">
             {/*Background video*/}
             <div className="card">
                 <img src="https://picsum.photos/id/287/250/300" alt="Mountains"/>
@@ -16,4 +16,4 @@ function Project() {
     );
 
 }
-export default Portfolio;
+export default Project;

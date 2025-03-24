@@ -10,7 +10,7 @@ import Education from './components/education.jsx';
 import Certification from './components/certification.jsx';
 import ContactMe from './components/contactMe.tsx';
 import Footer from './components/footer.jsx';
-
+import Project from './components/project.jsx';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
     <Portfolio />
     <AboutMe />
     <Education />
+    <Project/>
     <Certification/>
     <ContactMe />
     <Footer />

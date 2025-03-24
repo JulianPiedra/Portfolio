@@ -43,13 +43,11 @@
     max-width: 400px;
     min-height: 450px ;
     border-radius: 10px;
-    transition: all 0.5s;
     padding: 1rem;
     align-items: center;
     text-align: center;
     text-decoration: none;
     justify-content: space-evenly;
-    perspective: 1000px; 
     transform-style: preserve-3d;
 }
 
@@ -65,9 +63,9 @@
 }
 
 .certificationContainer .card img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    border-radius: 20%;
 }
 
 .certificationContainer .card p {
@@ -105,10 +103,7 @@
         width: 80%;
     }
 
-    .certificationContainer .card img {
-        width: 80px;
-        height: 80px;
-    }
+
 
     .certificationContainer .card p {
         margin: auto;
