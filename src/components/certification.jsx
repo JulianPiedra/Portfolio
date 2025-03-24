@@ -29,12 +29,13 @@ function Certifications() {
             }
         };
     }, [hasAnimated]);
+
     return (
         <section className="certification" id="certification" ref={certificationRef}>
             <div className={`certificationHeader ${isVisible ? "fadeInDown" : ""}`}>
                 <h1>{t('certification_title')}</h1>
             </div>
-
+            {isVisible && 
             <div className={`certificationContainer`} >
                 <CertificationCard
                     href="./certificate_scrum.pdf"
@@ -44,7 +45,6 @@ function Certifications() {
                     certificateDescription={t('scrum_cert')}
                     issuerLink="https://certiprof.com/"
                     site="Certiprof"
-                    className={`card ${isVisible ? "moveRight" : ""}`}
                 />
                 <CertificationCard
                     href="./certificate_remote.pdf"
@@ -54,9 +54,9 @@ function Certifications() {
                     certificateDescription={t('remote_cert')}
                     issuerLink="https://certiprof.com/"
                     site="Certiprof"
-                    className={`card ${isVisible ? "moveLeft" : ""}`}
                 />
             </div>
+            }
         </section>
     );
 }

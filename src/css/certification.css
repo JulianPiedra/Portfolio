@@ -28,29 +28,29 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: 5rem;
     flex-direction: row;
     width: fit-content;
     height: 100%;
     flex-wrap: wrap;
+    animation: fadeInUp 2s ease-out forwards;
 }
 
 .certificationContainer .card {
     width: fit-content;
     display: flex;
     flex-direction: column;
-    max-width: 550px;
-    min-height: fit-content;
+    max-width: 400px;
+    min-height: 450px ;
     border-radius: 10px;
-    background-color: #be09f5a1;
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
     transition: all 0.5s;
     padding: 1rem;
     align-items: center;
     text-align: center;
     text-decoration: none;
     justify-content: space-evenly;
-
+    perspective: 1000px; 
+    transform-style: preserve-3d;
 }
 
 .certificationContainer .card .info {
