@@ -95,7 +95,7 @@
   
   .skillConveyor {
     display: flex;
-    color: white;
+    color: var(--white);
     flex-direction: row;
     gap: 20px;
     justify-content: center;

@@ -15,7 +15,7 @@
 }
 
 .Header.scrolled {
-    background-color: #060a0f;
+    background-color: var(--gray);
 }
 
 .Header img {
@@ -74,7 +74,7 @@
     position: relative;
     height: 4px;
     width: 100%;
-    background-color: white;
+    background-color:var(--white);
     border-radius: 10px;
     transition: all 0.3s ease;
 }
@@ -140,9 +140,9 @@
 .mobileNav a {
     text-decoration: none;
     font-size: 18px;
-    color: white;
+    color:var(--white);
     padding: 10px;
-    border: #be09f5 1px solid;
+    border: var(--purple) 1px solid;
     width: 100%;
     text-align: center;
     border-radius: 5px;

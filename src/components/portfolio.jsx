@@ -18,7 +18,7 @@ function Portfolio() {
       </div>
 
 
-    </section>
+    </section> 
   );
 
 }

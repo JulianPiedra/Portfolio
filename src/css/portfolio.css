@@ -34,7 +34,7 @@
 }
 
 h1 span {
-    color: #be09f5;
+    color: var(--purple);
 }
 
 .portfolio h1 {
@@ -51,9 +51,9 @@ h1 span {
 }
 
 .portfolio a {
-    color: #be09f5;
+    color: var(--purple);
     text-decoration: none;
-    border: 1px solid #be09f5;
+    border: 1px solid var(--purple);
     padding: 20px;
     font-weight: 700;
     border-radius: 5px;

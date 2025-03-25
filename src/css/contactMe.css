@@ -22,7 +22,7 @@
 .contactMeForm {
     display: flex;
     align-items: center;
-    background-color: #060a0f;
+    background-color: var(--gray);
     border-radius: 14px;
     color: #e9ecef;
     flex-direction: column;
@@ -34,8 +34,7 @@
 
 .contactMeForm button {
     /* degradation */
-    background: linear-gradient(to right, #c834db, #3498db);
-    border: 1px solid #888;
+    background: linear-gradient(to right, var(--purple), #3498db);
     border-radius: 15px;
     color: #fff;
     cursor: pointer;
@@ -45,10 +44,11 @@
     transition: all 0.7s;
     text-transform: uppercase;
     width: 100%;
+    border: none;
 }
 
 .contactMeForm button:hover {
-    transform: scale(1.05);
+    scale: 1.02;
 }
 
 .inputFields {
@@ -135,7 +135,7 @@
 
 @media (max-width: 768px) {
     .contactMeForm {
-        width: 85%;
+        width: 90%;
     }
     .inputContainer label {
         font-size: 14px;

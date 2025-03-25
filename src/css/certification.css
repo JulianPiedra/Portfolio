@@ -18,10 +18,8 @@
 }
 
 .certificationHeader h1 {
-    color: white;
+    color:var(--white);
 }
-
-
 
 .certificationContainer {
     display: flex;

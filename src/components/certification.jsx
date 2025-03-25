@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import '../css/certification.css';
 import { useTranslation } from 'react-i18next';
-import CertificationCard from './card.jsx';
+import CertificationCard from './cards.jsx';
 
 function Certifications() {
     const { t } = useTranslation();  // Hook to access translations
