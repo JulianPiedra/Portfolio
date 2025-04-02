@@ -1,5 +1,10 @@
 {
     "language": "es",
+    "site": "Página",
+    "sql": "Generador de Datos SQL",
+    "project_title": "Proyectos",
+    "sql_description": "Un simple generador de datos SQL que te permite crear tablas, columnas y filas con datos aleatorios. También puedes exportar los datos generados a archivos .sql, .csv, .json o .xml.",
+    "sql_api_description": "API RESTful que proporciona datos en formato JSON. Es utilizado por el sitio Generador de Datos SQL, suministra todos los datos necesarios para generar los archivos.",
     "portfolio_line_one": "¡Hola! ",
     "about_me": "Déjame contarte un poco sobre mí",
     "name_intro": "Mi nombre es ",

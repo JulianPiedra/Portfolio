@@ -39,7 +39,7 @@ function Header() {
             window.removeEventListener("click", handleClickOutside); // Clean up click event listener
         };
     }, [isMenuOpen]);
-    const NavLinks = (showLanguage) => {
+    const NavLinks = ({ showLanguage }) => {
         return (
             <ul>
                 <li>
@@ -47,6 +47,9 @@ function Header() {
                 </li>
                 <li>
                     <a href="#education">{t('education_title')}</a>
+                </li>
+                <li>
+                    <a href="#project">{t('project_title')}</a>
                 </li>
                 <li>
                     <a href="#certification">{t('certification_title')}</a>

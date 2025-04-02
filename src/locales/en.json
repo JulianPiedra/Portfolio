@@ -1,5 +1,10 @@
 {
     "language": "en",
+    "site": "Site",
+    "sql": "SQL Data Generator",
+    "project_title": "Projects",
+    "sql_description": "A simple SQL data generator that allows you to create tables, columns, and rows with random data. You can also export the generated data to a .sql, .csv, .json or .xml files.",
+    "sql_api_description": "RESTful API that provides data in JSON format. It's used by the SQL Data Generator site, it supplies all of the data needed to generate the files.",
     "about_me": "Let me tell you a little about me",
     "about_me_explore": "Or... you can start by taking a look by yourself",
     "portfolio_line_one": "Hello there! ",
